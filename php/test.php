@@ -13,9 +13,9 @@ $api_url = 'http://www.kopis.or.kr/openApi/restful/pblprfr';
 
 // 필수 및 선택적 매개변수 설정
 $service_key = 'a875cf23b1ac4fdebe91b2ab2478c821';
-$stdate = '20230501';
+$stdate = '20231101';
 $eddate = '202301230';
-$rows = 10;
+$rows = 15;
 $cpage = 1;
 $shcate  = 'GGGA';
 
@@ -97,17 +97,19 @@ foreach ($xml->db as $db) {
     $poster = (string)$db->poster;
     $genrenm = (string)$db->genrenm;
     $prfstate = (string)$db->prfstate;
-    $openrun = (string)$db->openrun;
+    //$openrun = (string)$db->openrun;
 
+    
     echo "mt20id: $mt20id<br>";
     echo "prfnm: $prfnm<br>";
     echo "prfpdfrom: $prfpdfrom<br>";
     echo "prfpdto: $prfpdto<br>";
     echo "fcltynm: $fcltynm<br>";
-    echo "poster: $poster<br>";
+    // echo "poster: $poster<br>";
+    echo "<img src='$poster' alt='$prfnm Poster'><br>";
     echo "genrenm: $genrenm<br>";
     echo "prfstate: $prfstate<br>";
-    echo "openrun: $openrun<br>";
+    //echo "openrun: $openrun<br>";
     echo "<br>";
 }
 
