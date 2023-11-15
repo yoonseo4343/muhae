@@ -5,3 +5,7 @@
 
 # Process(진행과정)
 ![image](https://github.com/yoonseo4343/muhae/assets/78381554/432029c0-340c-4831-bfbb-029513c8fe33)
+스키마
+
+![image](https://github.com/yoonseo4343/muhae/assets/78381554/d9dd1929-0490-40a0-ba77-d1db3d91bc0d)
+예상결과
