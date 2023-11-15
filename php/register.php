@@ -1,78 +1,55 @@
 <?php
-    $u_id = $_POST['u_id'];
-    $u_pw = $_POST['u_pw'];
-    $u_name = $_POST['u_name'];
-    $u_pw_check = $_POST['u_pw_check'];
+// 데이터베이스 연결 
+require_once("../dbconfig.php");
 
+// 폼이 제출되었을 때의 처리
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // 사용자로부터 받은 데이터를 변수에 할당
+    $memberId = $_POST["ID"];
+    $email = $_POST["email"];
+    $pw = $_POST["pw"];
+    $nickName = $_POST["uname"];
+
+    // 데이터베이스에 데이터 추가
+    $e_pw = password_hash($pw, PASSWORD_DEFAULT);
+    $query_add_user = "INSERT INTO member(memberId, pw, nickName, email) VALUES ('$memberId', '$e_pw', '$nickName', '$email')";
     
-    $host = '';
-    $dbuser = '';
-    $dbpw = '';
-    $dbname = '';
-
-    if (!is_null($u_id)) {
-        $conn = new mysqli($host, $dbuser, $dbpw, $dbname);
-        $querys = "select * from members_t where strId = '".$u_id."';";
-        $query_result = mysqli_query($conn, $querys);
-        while($row = mysqli_fetch_array($query_result)){
-            $q_id = $row['strId'];
-        }
-        if($u_id == $q_id){
-            $double_id = 1;
-        }
-        elseif($u_pw != $u_pw_check){
-            $wrong_pw = 1;
-        }
-        else{
-            $e_pw = password_hash($u_pw, PASSWORD_DEFAULT);
-            $query_add_user = "INSERT INTO members_t(strName, strId, strPw) VALUES ('".$u_name."','".$u_id."','".$e_pw."');";
-            mysqli_query($conn, $query_add_user);
-            header('Location: login.php');
-        }
+    if (mysqli_query($conn, $query_add_user)) {
+        echo "회원가입이 완료되었습니다.";
+    } else {
+        echo "Error: " . $query_add_user . "<br>" . mysqli_error($conn);
     }
+}
+
+// 데이터베이스 연결 종료
+mysqli_close($conn);
 ?>
-</body>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SubscriptionPlanner Sign Up</title>
-    <link rel="stylesheet" href="style.css">  
+    <title>회원가입</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class="signUp_main">
-        <section class="input_section">
-            <div class="signUpTitle">
-                <label>회원가입</label>
-            </div>
-            <form action="register.php" method="POST">
-                <div class="signUp_name">
-                    <input type="text" name="u_name" placeholder="사용자 이름" onfocus="this.placeholder=''" onblur="this.placeholder='사용자 이름'"  required>
-                </div>
-                <div class="signUp_id">
-                    <input type="text" name="u_id" placeholder="사용자 ID" onfocus="this.placeholder=''" onblur="this.placeholder='사용자 ID'" required>
-                </div>
-                <div class="signUp_pw">
-                    <input type="password" name="u_pw" placeholder="비밀번호 "onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호'" required>
-                </div>
-                <div class="signUp_pw_check">
-                    <input type="password" name="u_pw_check" placeholder="비밀번호 확인" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호 확인'" required>
-                </div>
-  
-                <button class="signUp_button" type="summit">진행</button>
-                <?php
-                    if ( $double_id == 1 ) {
-                        echo "<p>사용자 ID가 중복되었습니다.</p>";
-                    }
-                    if ( $wrong_pw == 1 ) {
-                        echo "<p>비밀번호가 일치하지 않습니다.</p>";
-                    }
-                ?>
-            </form>
-        </section>
-        <section class="otherButtons_section">
-            <button class="OB_signIn1" onclick="location.href='login.php' ">Sign In</button>
-            <button class="OB_signUp0">Sign Up</button>
-        </section>
-    </div>
+    <form action="register.php" method="POST">
+        <h2>회원가입</h2>
+
+        <label>아이디</label>
+        <input type="text" memberId="memberId" placeholder="memberId" required><br>
+
+        <label>이메일</label>
+        <input type="text" name="email" placeholder="email" required><br>
+
+        <label>비밀번호</label>
+        <input type="password" name="pw" placeholder="pw" required><br>
+
+        <label>닉네임</label>
+        <input type="text" name="uname" placeholder="User Name" required><br>
+
+
+        <button type="submit">회원가입</button><br>
+        <a href="login.php" class="ca">이미 가입 되어 있으신가요?</a>
+    </form>
 </body>
 </html>
