@@ -1,18 +1,8 @@
 <!-- musicals table에 api 정보 불러와서 저장 -->
 <?php
 
-// 데이터베이스 연결 정보
-$host = 'your_database_host';
-$user = 'your_database_username';
-$pass = 'your_database_password';
-$db   = 'your_database_name';
-
 // 데이터베이스 연결
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once("../dbconfig.php");
 
 // Open API URL 및 서비스 키
 $api_url = 'http://www.kopis.or.kr/openApi/restful/pblprfr/PF132236?service=your_service_key';
