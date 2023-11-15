@@ -4,3 +4,4 @@
 ![intro](https://capsule-render.vercel.app/api?type=transparent&text=양수연,이재연,최윤서&fontAlign=50&animation=blink&fontSize=20&section=intro&height=50)
 
 # Process(진행과정)
+![image](https://github.com/yoonseo4343/muhae/assets/78381554/432029c0-340c-4831-bfbb-029513c8fe33)
