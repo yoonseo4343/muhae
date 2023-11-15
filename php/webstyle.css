@@ -1,0 +1,50 @@
+/*웹페이지 메인틀 style.css*/
+/* 구역확인을 위한 임시 색상 설정 */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+nav {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+}
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 0 150px; /* 여백 추가 */
+}
+.left-side {
+    flex: 1;
+    background-color: blue;
+}
+.center {
+    flex: 3;
+    background-color: pink;
+    text-align: center;
+}
+.center img {
+    width: 100%; /* 이미지 크기 100%로 지정 */
+    max-width: 600px; /* 최대 가로 너비 설정 */
+    height: auto; /* 세로 비율에 맞게 자동 조정 */
+    display: block; /* 가운데 정렬을 위해 필요한 속성 */
+    margin: 0 auto; /* 가운데 정렬 */
+}
+.right-side {
+    flex: 1;
+    background-color: purple;
+}
