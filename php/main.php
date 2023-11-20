@@ -27,12 +27,15 @@ $loggedIn = isset($_SESSION['id']);
         <a href="#">MUSICALS</a>
         <a href="#">REVIEW</a>
         <a href="#">LIKE</a>
-        <a href="#">TICKETBOOK</a>
+        <a href="myTicket.php">TICKETBOOK</a>
         <a href="#">MYPAGE</a>
         <?php
         // 로그인되어 있는 경우에만 로그아웃 링크를 표시
         if ($loggedIn) {
             echo '<a href="logout.php">LOGOUT</a>';
+        }
+        else{
+            echo '<a href="login.php">LOGIN</a>';
         }
         ?>
     </nav>
