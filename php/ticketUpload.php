@@ -15,7 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 사용자로부터 받은 입력 값
     session_start();
-    $memberId = $_SESSION['id']; //세션 아이디 불러옴
+    //$memberId = $_SESSION['id']; //세션 아이디 불러옴
+    $sessionId=session_id();
     $ticketData = $_POST['ticketData'];
     $ticketMemo = $_POST['ticketMemo'];
 
@@ -41,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // 데이터베이스에 데이터 삽입
-    $sql = "INSERT INTO ticketBook (memberId, ticketData, ticketPicture, ticketMemo) VALUES ('$memberId', '$ticketData', '$destination', '$ticketMemo')";
+    $sql = "INSERT INTO ticketBook (ticketId, memberId, ticketData, ticketPicture, ticketMemo) VALUES ('$sessionId', '$ticketData', '$destination', '$ticketMemo')";
 
     if ($conn->query($sql) === TRUE) {
         echo "티켓이 성공적으로 등록되었습니다.";
@@ -57,8 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- 티켓 등록 폼 -->
 <form method="post" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
-    <label for="ticketData">티켓 이름:</label>
-    <input type="text" name="ticketData" required><br>
+    <label for="ticketData">관극 날짜:</label>
+    <input type="date" name="ticketData" required><br>
 
     <label for="ticketPicture">사진 첨부:</label>
     <input type="file" name="ticketPicture" accept="image/*" required><br>
