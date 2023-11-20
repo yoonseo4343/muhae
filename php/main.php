@@ -34,6 +34,17 @@
         </div>
 
         <div class="right-side">
+        <table>
+                <thead>
+                    <tr><th>REVIEW</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><a href="hero.php" target="_blank"><img src="영웅.jpg" width="200" height="80" alt=""></a></td></tr>
+                    <tr><td><a href="hero.php" target="_blank"><img src="영웅.jpg" width="200" height="80" alt="영웅"></a></td></tr>
+                    <tr><td><a href="hero.php" target="_blank"><img src="영웅.jpg" width="200" height="80" alt="영웅"></a></td></tr>
+                </tbody>
+            </table>
+
             <!-- 리뷰 내용을 추가할 부분 -->
         </div>
     </div>
