@@ -7,6 +7,8 @@ session_start();
 // 로그인 여부 확인
 $loggedIn = isset($_SESSION['id']);
 
+$sessionId=$_SESSION['id'];
+
 ?>
 <header>
     <h1><a href="main.php" style="text-decoration: none; color: inherit;">뭐해? 뮤해!</h1>

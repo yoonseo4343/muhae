@@ -21,47 +21,31 @@
     // 데이터베이스 연결
     require_once("dbconfig.php");
 
+     // ticketBook 테이블에서 memberId가 $sessionId인 경우 조회
+     $selectSql = "
+     SELECT ticketDate, ticketPicture
+     FROM ticketBook
+     WHERE memberId = '$sessionId'
+ ";
 
-    // 나의 티켓북 뷰 생성 SQL 문
-    $createViewSql = "
-        CREATE VIEW myTickets AS
-        SELECT ticketId, ticketDate, ticketPicture, ticketMemo
-        FROM ticketBook
-        WHERE memberId = '$sessionId'
-    ";
+ $result = $conn->query($selectSql);
 
-    // 뷰 생성 실행
-    if ($conn->query($createViewSql) === TRUE) {
-        echo "뷰가 성공적으로 생성되었습니다.";
-    } else {
-        echo "뷰 생성에 실패했습니다. 에러: " . $conn->error;
-    }
+ // 결과가 있을 경우 출력
+ if ($result->num_rows > 0) {
+     echo "<table>";
+     echo "<tr><th>Ticket Picture</th><th>Ticket Date</th></tr>";
 
-    // 뷰의 내용 조회 SQL 문
-    $selectViewSql = "
-        SELECT ticketId, ticketDate, ticketPicture, ticketMemo
-        FROM myTickets
-    ";
+     while ($row = $result->fetch_assoc()) {
+         echo "<tr>";
+         echo "<td><img src='" . $row["ticketPicture"] . "' alt='Ticket Picture' style='width: 100px; height: auto;'></td>";
+         echo "<td>" . $row["ticketDate"] . "</td>";
+         echo "</tr>";
+     }
 
-    // 뷰의 내용 조회
-    $result = $conn->query($selectViewSql);
-
-    // 결과가 있을 경우 출력
-    if ($result->num_rows > 0) {
-        echo "<table>";
-        echo "<tr><th>Ticket Picture</th><th>Ticket Date</th></tr>";
-
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . $row["ticketPicture"] . "</td>";
-            echo "<td>" . $row["ticketDate"] . "</td>";
-            echo "</tr>";
-        }
-
-        echo "</table>";
-    } else {
-        echo "뷰의 내용이 없습니다.";
-    }
+     echo "</table>";
+ } else {
+     echo "티켓이 없습니다.";
+ }
 
     // 데이터베이스 연결 종료
     $conn->close();

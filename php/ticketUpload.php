@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>티켓 등록 페이지</title>
+    <style>
+        <?php include 'webstyle.css';?> 
+        /* 스타일 불러옴 */
+    </style>
 </head>
 <body>
-
+    <!-- 헤더,네비 불러옴 -->
+    <?php include 'title.php'; ?>
+<div class="content">
+    <div class="center">
 <?php
 // 폼이 제출되었을 때의 처리
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 데이터베이스 연결
     require_once("dbconfig.php");
 
-    // 사용자로부터 받은 입력 값
-    session_start();
-    //$memberId = $_SESSION['id']; //세션 아이디 불러옴
-    $sessionId=session_id();
-    $ticketData = $_POST['ticketData'];
+    $ticketDate = $_POST['ticketDate'];
     $ticketMemo = $_POST['ticketMemo'];
 
     // 파일 업로드 처리
-    $uploadDirectory = 'uploads/'; // 업로드된 파일이 저장될 디렉터리
+    $uploadDirectory = 'tickets/'; // 업로드된 파일이 저장될 디렉터리
 
     if ($_FILES['ticketPicture']['error'] !== UPLOAD_ERR_OK) {
         die('파일 업로드 실패: ' . $_FILES['ticketPicture']['error']);
@@ -42,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // 데이터베이스에 데이터 삽입
-    $sql = "INSERT INTO ticketBook (ticketId, memberId, ticketData, ticketPicture, ticketMemo) VALUES ('$sessionId', '$ticketData', '$destination', '$ticketMemo')";
+    $sql = "INSERT INTO ticketBook (memberId, ticketDate, ticketPicture, ticketMemo) VALUES ('$sessionId', '$ticketDate', '$destination', '$ticketMemo')";
 
     if ($conn->query($sql) === TRUE) {
         echo "티켓이 성공적으로 등록되었습니다.";
@@ -58,8 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- 티켓 등록 폼 -->
 <form method="post" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
-    <label for="ticketData">관극 날짜:</label>
-    <input type="date" name="ticketData" required><br>
+    <label for="ticketDate">관극 날짜:</label>
+    <input type="date" name="ticketDate" required><br>
 
     <label for="ticketPicture">사진 첨부:</label>
     <input type="file" name="ticketPicture" accept="image/*" required><br>
@@ -69,6 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <input type="submit" value="등록하기">
 </form>
-
+    </div>
+</div>
 </body>
 </html>
