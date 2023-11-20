@@ -1,12 +1,3 @@
-<?php
-// 세션 시작
-session_start();
-
-// 로그인 여부 확인
-$loggedIn = isset($_SESSION['id']);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +9,6 @@ $loggedIn = isset($_SESSION['id']);
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>뭐해? 뮤해!</h1>
-    </header>
     
     <?php include 'title.php'; ?>
 

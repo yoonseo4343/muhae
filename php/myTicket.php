@@ -15,15 +15,12 @@
 
 <div class="content">
     <div class="center">
+    <!-- 티켓북 업로드 버튼 -->
+    <a href="ticketUpload.php"><button>티켓 추가</button></a>
     <?php
     // 데이터베이스 연결
     require_once("dbconfig.php");
 
-    // 세션 시작
-    session_start();
-
-    // 현재 로그인된 사용자의 세션 아이디 가져오기
-    $sessionId = session_id();
 
     // 나의 티켓북 뷰 생성 SQL 문
     $createViewSql = "

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>로그인</title>
+    <title>로그인</title>
     <style>
-        <?php include 'webstyle.css';?> 
-        /* 스타일 불러옴 */
+        <?php include 'webstyle.css';?>
     </style>
 </head>
 <body>
@@ -13,13 +12,15 @@
     <div class="center">
     <?php
 
+   // 데이터베이스 연결
+   require_once("dbconfig.php");
     // 폼에서 받은 데이터
-    $memberId = $_POST["ID"];
-    $pw = $_POST["pw"];
+    $memberId = isset($_POST["memberId"]) ? $_POST["memberId"] : null;
+    $pw = isset($_POST["pw"]) ? $_POST["pw"] : null;
 
-    //id, pw null값이 아니라면 연결
-    if (isset($_POST['ID'],$_POST['pw'])) {
-        $conn = new mysqli($DBhost, $DBuser, $DBpassword, $DBname);
+    // 아이디와 비밀번호가 입력되었는지 확인
+    if (isset($memberId, $pw)) {
+        //$conn = new mysqli($DBhost, $DBuser, $DBpassword, $DBname);
 
         function validate($data){
             $data = trim($data);
@@ -28,40 +29,31 @@
             return $data;
         }
 
-        $memberId = validate($_POST['ID']);
-        $pw = validate($_POST['pw']);
+        $memberId = validate($memberId);
+        $pw = validate($pw);
 
-        if(empty($memberId)){ //id 비어있을 때 
-            header("Location: index.php?error = memberId를 입력하세요");
-            exit();
-        }else if(empty($pw)){ //pw 비어있을 때
-            header("Location: index.php?error = pw를 입력하세요");
-            exit();
-        }else{
-            $hashed_pw = password_hash($pw, PASSWORD_BCRYPT);
-        }
-
-        //member 테이블에서 데이터 조회하는 sql 쿼리 생성 및 실행
-        $sql = "SELECT * FROM member WHERE user_name='$memberId'";
+        // member 테이블에서 데이터 조회하는 SQL 쿼리 생성 및 실행
+        $sql = "SELECT * FROM member WHERE memberId='" . mysqli_real_escape_string($conn, $memberId) . "'";
         $result = mysqli_query($conn, $sql);
 
-        if($result){
+        if ($result) {
             $row = mysqli_fetch_assoc($result);
             $q_pw = $row['pw'];
             $u_name = $row['memberId'];
             $u_nickName = $row['nickName'];
-            //사용자 id와 pw 일치 시 세션 변수 설정 후 메인 화면으로 고고
-            if(password_verify($pw, $q_pw)){ //pw 일치 확인
+
+            // 사용자 아이디와 비밀번호 일치 시 세션 변수 설정 후 메인 화면으로 이동
+            if (password_verify($pw, $q_pw)) {
                 $_SESSION['id'] = $memberId;
-                $_SESSION['name'] = $nickName;
+                $_SESSION['name'] = $u_nickName;
                 header("Location: main.php");
                 exit();
-            }else {
-                header("계정명 또는 암호가 틀렸습니다.");
+            } else {
+                header("Location: index.php?error=계정명 또는 암호가 틀렸습니다.");
                 exit();
             }
-        }else {
-            header("계정명 또는 암호가 틀렸습니다.");
+        } else {
+            header("Location: index.php?error=계정명 또는 암호가 틀렸습니다.");
             exit();
         }
     }
@@ -79,7 +71,7 @@
     <input type="password" name="pw" placeholder="Password"><br>
 
     <button type="submit">로그인</button>
-        <a href="register.php" class="ca">회원 가입</a>
+    <a href="register.php" class="ca">회원 가입</a>
     </form>
 </body>
 </html>
