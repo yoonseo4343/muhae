@@ -32,6 +32,10 @@ nav a {
     flex: 1;
     background-color: blue;
 }
+.left-side img {
+    width: 100%; /* 이미지 크기 100%로 지정 */
+    height: auto; /* 세로 비율에 맞게 자동 조정 */
+}
 .center {
     flex: 3;
     background-color: pink;
@@ -39,7 +43,7 @@ nav a {
 }
 .center img {
     width: 100%; /* 이미지 크기 100%로 지정 */
-    max-width: 600px; /* 최대 가로 너비 설정 */
+    /* max-width: 600px; 최대 가로 너비 설정 */
     height: auto; /* 세로 비율에 맞게 자동 조정 */
     display: block; /* 가운데 정렬을 위해 필요한 속성 */
     margin: 0 auto; /* 가운데 정렬 */
@@ -47,6 +51,12 @@ nav a {
 .right-side {
     flex: 1;
     background-color: purple;
+}
+.right-side img {
+    width: 100%; /* 이미지 크기 100%로 지정 */
+    height: auto; /* 세로 비율에 맞게 자동 조정 */
+    display: block; /* 가운데 정렬을 위해 필요한 속성 */
+    margin: 0 auto; /* 가운데 정렬 */
 }
 .album {
     display: flex;

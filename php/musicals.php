@@ -39,7 +39,7 @@
 
                     // 앨범 형식으로 출력
                     echo "<div class='album-item'>";
-                    echo "<a href='musical_detail.php?prfnm=$musicalId'>";
+                    echo "<a href='musical_detail.php?id=$musicalId'>";
                     echo "<img src='$poster' alt='$musicalId Poster'>";
                     echo "</a>";
                     echo "</div>";
