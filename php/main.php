@@ -1,3 +1,12 @@
+<?php
+// 세션 시작
+session_start();
+
+// 로그인 여부 확인
+$loggedIn = isset($_SESSION['id']);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +27,17 @@
         <a href="#">MUSICALS</a>
         <a href="#">REVIEW</a>
         <a href="#">LIKE</a>
-        <a href="#">TICKETBOOK</a>
+        <a href="myTicket.php">TICKETBOOK</a>
         <a href="#">MYPAGE</a>
+        <?php
+        // 로그인되어 있는 경우에만 로그아웃 링크를 표시
+        if ($loggedIn) {
+            echo '<a href="logout.php">LOGOUT</a>';
+        }
+        else{
+            echo '<a href="login.php">LOGIN</a>';
+        }
+        ?>
     </nav>
 
     <div class="content">
@@ -34,7 +52,7 @@
         </div>
 
         <div class="right-side">
-        <table>
+            <table>
                 <thead>
                     <tr><th>REVIEW</th></tr>
                 </thead>
