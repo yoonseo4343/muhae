@@ -11,9 +11,7 @@
 
 </head>
 <body>
-  <header>
-		<h1>뭐해? 뮤해!</h1>
-	</header>
+        <?php include 'title.php'; ?>
 	<form action="write.php" method="POST">
         <fieldset style="width:330px">
         <legend>영웅 후기 게시판</legend>

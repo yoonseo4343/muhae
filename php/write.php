@@ -9,6 +9,7 @@
   </style>
 </head>
 <body>
+<?php include 'title.php'; ?>
 <?php
 	$conn = mysqli_connect('18.211.113.100', 'root','rootuser', 'muhae');
 	$sql = "
