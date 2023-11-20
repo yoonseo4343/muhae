@@ -11,10 +11,11 @@
 // 폼이 제출되었을 때의 처리
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 데이터베이스 연결
-    require_once("../dbconfig.php");
+    require_once("dbconfig.php");
 
     // 사용자로부터 받은 입력 값
-    $memberId = $_POST['memberId'];
+    session_start();
+    $memberId = $_SESSION['id']; //세션 아이디 불러옴
     $ticketData = $_POST['ticketData'];
     $ticketMemo = $_POST['ticketMemo'];
 
@@ -55,8 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!-- 티켓 등록 폼 -->
 <form method="post" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <label for="memberId">회원 아이디:</label>
-    <input type="text" name="memberId" required><br>
 
     <label for="ticketData">티켓 이름:</label>
     <input type="text" name="ticketData" required><br>
