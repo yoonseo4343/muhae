@@ -48,3 +48,32 @@ nav a {
     flex: 1;
     background-color: purple;
 }
+.album {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.album-item {
+    flex-basis: calc(33.3333% - 20px);
+    margin-bottom: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+}

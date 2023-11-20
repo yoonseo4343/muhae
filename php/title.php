@@ -15,7 +15,7 @@ $sessionId=$_SESSION['id'];
 </header>
 
 <nav>
-    <a href="#">MUSICALS</a>
+    <a href="musicals.php">MUSICALS</a>
     <a href="#">REVIEW</a>
     <a href="#">LIKE</a>
     <a href="myTicket.php">TICKETBOOK</a>
