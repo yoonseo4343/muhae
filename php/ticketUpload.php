@@ -72,6 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <input type="submit" value="등록하기">
 </form>
+<a href="myTicket.php"><button>돌아가기</button></a>
     </div>
 </div>
 </body>
