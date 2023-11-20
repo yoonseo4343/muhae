@@ -1,11 +1,3 @@
-<?php
-// 세션 시작
-session_start();
-
-// 로그인 여부 확인
-$loggedIn = isset($_SESSION['id']);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

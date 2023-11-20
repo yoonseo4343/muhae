@@ -3,15 +3,16 @@
 <head>
 	<title>로그인</title>
 	<link rel="stylesheet" type="text/css" href="webstyle.css">
+    <style>
+        <?php include 'webstyle.css';?> 
+        /* 스타일 불러옴 */
+    </style>
 </head>
 <body>
+<?php include 'title.php'; ?>
+<div class="content">
+    <div class="center">
     <?php
-    session_start();
-    include "dbconfig.php";
-    // $memberId = $_POST["ID"];
-    //     $email = $_POST["email"];
-    //     $pw = $_POST["pw"];
-    //     $nickName = $_POST["uname"];
 
     // 폼에서 받은 데이터
     $memberId = $_POST["ID"];

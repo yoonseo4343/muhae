@@ -1,5 +1,13 @@
 <!-- <body> 태그 안에 넣으면 됨. -->
     <!-- 헤더와 네비 기능 -->
+<?php
+// 세션 시작
+session_start();
+
+// 로그인 여부 확인
+$loggedIn = isset($_SESSION['id']);
+
+?>
 <header>
     <h1><a href="main.php" style="text-decoration: none; color: inherit;">뭐해? 뮤해!</h1>
 </header>
