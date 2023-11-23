@@ -26,7 +26,7 @@
                 WHERE musicalId = '$id'";
             $result = $conn->query($sql);
 
-            //출력
+            //사진 출력
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<p> <img src='{$row['poster']}' alt='Poster' class='responsive-img'></p>";
@@ -39,15 +39,43 @@
             ?>
         </div>
         <div class="right-side">
+            <!-- 좋아요 버튼 폼 -->
+            <form method="post" action="">
+                <input type="hidden" name="sessionId" value="<?php echo $sessionId; ?>">
+                <input type="hidden" name="musicalId" value="<?php echo $id; ?>">
+                <button type="submit" name="likeButton" class="heart">LIKE♥</button>
+            </form>
+
             <?php
+            // 좋아요 버튼이 눌렸을 때 처리
+            if (isset($_POST['likeButton'])) {
+                // 클라이언트에서 전송한 데이터 가져오기
+                $memberId = $_POST["sessionId"];
+                $musicalId = $_POST["musicalId"];
+
+                // 중복 삽입 방지를 위한 쿼리
+                $checkDuplicateQuery = "SELECT * FROM likeMusical WHERE memberId = '$memberId' AND musicalId = '$musicalId'";
+                $duplicateResult = $conn->query($checkDuplicateQuery);
+
+                if ($duplicateResult->num_rows == 0) {
+                    // 중복이 없을 때만 삽입
+                    $likeSql = "INSERT INTO likeMusical (memberId, musicalId) VALUES ('$memberId', '$musicalId')";
+                    $likeRe = $conn->query($likeSql);
+                    echo '<script>alert("관심 뮤지컬로 등록되었습니다.");</script>';
+                } else {
+                    echo '<script>alert("이미 등록된 뮤지컬입니다.");</script>';
+                }
+            }
+            ?>
+        <?php
         //데이터 조회 쿼리
             $sql2 = "SELECT musicalName, openDate, closeDate,theaterName, 
                     actors, runningTime, age,price, musicalInfo,musicalState
                 FROM musicals
                 WHERE musicalId = '$id'";
             $result2 = $conn->query($sql2);
-
-            //출력
+            
+            //내용 출력
             if ($result2->num_rows > 0) {
                 while ($row = $result2->fetch_assoc()) {
                     echo "<p><strong>Musical Name:</strong> {$row['musicalName']}</p>";

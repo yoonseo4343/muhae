@@ -6,9 +6,9 @@ session_start();
 
 // 로그인 여부 확인
 $loggedIn = isset($_SESSION['id']);
-
-$sessionId=$_SESSION['id'];
-
+if($loggedIn){
+$sessionId=$_SESSION['id']; //현재 로그인된 회원 아이디 값
+}
 ?>
 <header>
     <h1><a href="main.php" style="text-decoration: none; color: inherit;">뭐해? 뮤해!</h1>
@@ -17,7 +17,7 @@ $sessionId=$_SESSION['id'];
 <nav>
     <a href="musicals.php">MUSICALS</a>
     <a href="#">REVIEW</a>
-    <a href="#">LIKE</a>
+    <a href="likepage.php">LIKE</a>
     <a href="myTicket.php">TICKETBOOK</a>
     <a href="#">MYPAGE</a>
     <?php
