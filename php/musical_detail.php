@@ -49,6 +49,8 @@
             <?php
             // 좋아요 버튼이 눌렸을 때 처리
             if (isset($_POST['likeButton'])) {
+                //로그인 검사
+                require_once("checkLog.php");
                 // 클라이언트에서 전송한 데이터 가져오기
                 $memberId = $_POST["sessionId"];
                 $musicalId = $_POST["musicalId"];

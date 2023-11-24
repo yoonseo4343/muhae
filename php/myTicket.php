@@ -10,8 +10,11 @@
     </style>
 </head>
 <body>
-    <!-- 헤더,네비 불러옴 -->
-<?php include 'title.php'; ?>
+    <!-- 헤더,네비 불러옴 / 로그인 검사-->
+<?php 
+include 'title.php'; 
+require_once("checkLog.php");
+?>
 
 <div class="content">
     <div class="center">
