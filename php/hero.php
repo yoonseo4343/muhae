@@ -16,15 +16,25 @@
         <fieldset style="width:330px">
         <legend>영웅 후기 게시판</legend>
         <?php
- 	$conn = mysqli_connect('18.211.113.100', 'root','rootuser', 'muhae');
+ 	// 데이터베이스 연결
+         require_once("dbconfig.php");
 
-	$sql = "SELECT * FROM muhae";
-	while($row = mysqli_fetch_array)$result)){
-		echo $row['rating'];
-		echo $row['review'];        
+	$sql = "SELECT rating,title FROM review";
+	$result = mysqli_query($conn, $sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "Rating: " . $row['rating'] . "<br>";
+                        echo "Title: " . $row['title'] . "<br><br>";
+                    }
+                } else {
+                    echo "No reviews yet.";
+                }
+
+                mysqli_close($conn);
         ?>
         </fieldset>
-        <div align="left">
+        <div class="left">
             <input type="submit" value="후기작성">
         </div>
 </form>

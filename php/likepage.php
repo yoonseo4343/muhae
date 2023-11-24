@@ -52,7 +52,7 @@
                 echo "</div>";
 
                 // 페이지 링크 출력
-                $totalItems = mysqli_num_rows(mysqli_query($conn, "SELECT musicalId FROM musicals"));
+                $totalItems = mysqli_num_rows(mysqli_query($conn, "SELECT musicalId FROM likeMusical"));
                 $totalPages = ceil($totalItems / $itemsPerPage);
                 echo "<div class='pagination'>";
                 for ($i = 1; $i <= $totalPages; $i++) {
