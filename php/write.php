@@ -1,65 +1,80 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
+    <meta charset='utf-8'>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>뭐해? 뮤해!</title>
-	<style>
+    <style>
+        
+        table.table2 {
+            border-collapse: separate;
+            border-spacing: 1px;
+            text-align: left;
+            line-height: 1.5;
+            border-top: 1px solid #ccc;
+            margin: 20px 10px;
+        }
+
+        table.table2 tr {
+            width: 50px;
+            padding: 10px;
+            font-weight: bold;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+        }
+
+        table.table2 td {
+            width: 100px;
+            padding: 10px;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+        }
         <?php include 'webstyle.css';?>
-  </style>
+    </style>
 </head>
+
 <body>
 <?php include 'title.php'; ?>
-<?php
-	$conn = mysqli_connect('18.211.113.100', 'root','rootuser', 'muhae');
-	$sql = "
-		INSERT INTO muhae
-		(rating, review)
-		VALUES(
-			'{$_POST['rating']}',
-			'{$_POST['review']}',
-			NOW()
-		)
-		";
-		mysql_query($conn, $sql);
-		echo $sql;
-?>
+    <form method="post" action="write_action.php">
+        <!-- method : POST!!! (GET X) -->
+        <table style="padding-top:50px" align=center width=auto border=0 cellpadding=2>
+            <tr>
+                <td style="height:40; float:center; background-color:#3C3C3C">
+                    <p style="font-size:25px; text-align:center; color:white; margin-top:15px; margin-bottom:15px"><b>게시글 작성하기</b></p>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor=white>
+                    <table class="table2">
+                        <tr>
+                            <td>작성자</td>
+                            <td><input type="text" name="name" size=30></td>
+                        </tr>
 
+                        <tr>
+                            <td>제목</td>
+                            <td><input type="text" name="title" size=70></td>
+                        </tr>
 
-    <div id="board_write">
-        <h2>REVIEW</h2>
-            <div id="write_board">
-                <form action="hero.php" method="POST">
-                    <div id="board_title">
-                       제목 :  <input type="text" name="title" size="30">
-                    </div>
-	
-                    <hr>
-                    <div id="in_rating">
-                    <fieldset style="width:330px">
-                    별점 :
-                    <select name="rating" style="width:100px;height:30px">
-                        <option value="★★★★★"> ★★★★★ </option>
-                        <option value="★★★★☆"> ★★★★☆ </option>
-                        <option value="★★★☆☆"> ★★★☆☆ </option>
-                        <option value="★★☆☆☆"> ★★☆☆☆ </option>
-                        <option value="★☆☆☆☆"> ★☆☆☆☆ </option>
-                    </select><br>
-                    
-                    후기 : <br>
-                    <textarea name="review" cols="50" rows="50">
-                    </textarea>
-                    <hr>
+                        <tr>
+                            <td>내용</td>
+                            <td><textarea name="content" cols=75 rows=15></textarea></td>
+                        </tr>
 
-                    <div align="center">
-  					<input type="submit" value="전송하기"> &nbsp;&nbsp;
-  					<input type="reset" value="다시작성">
-                </div><br>
-  				</fieldset>
+                        <tr>
+                            <td>비밀번호</td>
+                            <td><input type="password" name="pw" size=15 maxlength=15></td>
+                        </tr>
+                    </table>
 
-                </form>
-            </div>
-    </div>
-
+                    <center>
+                        <input style="height:26px; width:47px; font-size:16px;" type="submit" value="작성">
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </form>
 </body>
+
 </html>
