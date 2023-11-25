@@ -1,17 +1,17 @@
 <?php
-$connect = mysqli_connect("127.0.0.1", "root", "password", "db_board") or die("fail");
+require_once("dbconfig.php");
 
 $id = $_POST['name'];                   //Writer
 $pw = $_POST['pw'];                     //Password
 $title = $_POST['title'];               //Title
 $content = $_POST['content'];           //Content
-$date = date('Y-m-d H:i:s');            //Date
+$createdAt = date('Y-m-d H:i:s');            //Date
 
-$URL = './index.php';                   //return URL
+$URL = './hero.php';                   //return URL
 
 
 $query = "INSERT INTO board (number, title, content, date, hit, id, password) 
-        values(null,'$title', '$content', '$date', 0, '$id', '$pw')";
+        values(null,'$title', '$content', '$createdAt', 0, '$id', '$pw')";
 
 
 $result = $connect->query($query);
