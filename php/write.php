@@ -6,30 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>뭐해? 뮤해!</title>
     <style>
-        
-        table.table2 {
-            border-collapse: separate;
-            border-spacing: 1px;
-            text-align: left;
-            line-height: 1.5;
-            border-top: 1px solid #ccc;
-            margin: 20px 10px;
-        }
-
-        table.table2 tr {
-            width: 50px;
-            padding: 10px;
-            font-weight: bold;
-            vertical-align: top;
-            border-bottom: 1px solid #ccc;
-        }
-
-        table.table2 td {
-            width: 100px;
-            padding: 10px;
-            vertical-align: top;
-            border-bottom: 1px solid #ccc;
-        }
         <?php include 'webstyle.css';?>
     </style>
 </head>

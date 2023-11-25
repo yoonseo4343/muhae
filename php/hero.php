@@ -6,51 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>뭐해? 뮤해!</title>
     <style>
-        table {
-            border-top: 1px solid #444444;
-            border-collapse: collapse;
-        }
-
-        tr {
-            border-bottom: 1px solid #444444;
-            padding: 10px;
-        }
-
-        td {
-            border-bottom: 1px solid #efefef;
-            padding: 10px;
-        }
-
-        table .even {
-            background: #efefef;
-        }
-
-        .text {
-            text-align: center;
-            padding-top: 20px;
-            color: #000000
-        }
-
-        .text:hover {
-            text-decoration: underline;
-        }
-
-        a:link {
-            color: #57A0EE;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
         <?php include 'webstyle.css';?>
     </style>
 </head>
 
 <body>
     <?php
-    $connect = mysqli_connect('127.0.0.1', 'root', 'password', 'db_board') or die("connect failed");
-    $query = "select * from board order by number desc";    //역순 출력
+    require_once("dbconfig.php");
+    $query = "select * from review order by boardId desc";    //역순 출력
     $result = mysqli_query($connect, $query);
     //$result = $connect->query($query);
     $total = mysqli_num_rows($result);  //result set의 총 레코드(행) 수 반환
