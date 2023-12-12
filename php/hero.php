@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>뭐해? 뮤해!</title>
-	<style>
+    <style>
         <?php include 'webstyle.css';?>
-
-  </style>
-
+    </style>
 </head>
+
 <body>
         <?php include 'title.php'; ?>
 	<form action="write.php" method="POST">
         <fieldset style="width:330px">
         <legend>영웅 후기 게시판</legend>
         <?php
- 	// 데이터베이스 연결
-         require_once("dbconfig.php");
+ 	$conn = mysqli_connect('18.211.113.100', 'root','rootuser', 'muhae');
 
-	$sql = "SELECT rating,title FROM review";
-	$result = mysqli_query($conn, $sql);
-
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo "Rating: " . $row['rating'] . "<br>";
-                        echo "Title: " . $row['title'] . "<br><br>";
-                    }
-                } else {
-                    echo "No reviews yet.";
-                }
-
-                mysqli_close($conn);
+	$sql = "SELECT * FROM muhae";
+	while($row = mysqli_fetch_array)$result)){
+		echo $row['rating'];
+		echo $row['review'];        
         ?>
         </fieldset>
-        <div class="left">
+        <div align="left">
             <input type="submit" value="후기작성">
         </div>
 </form>
  	
 </body>
+
 </html>
+ 	
