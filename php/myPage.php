@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>뭐해? 뮤해!</title>
+    <?php include 'title.php'; ?>
     <style>
         <?php include 'webstyle.css';?>
         /* 새로운 스타일 추가 */
@@ -32,10 +33,59 @@
             max-height: 200px; /* 원하는 높이로 조절 */
             margin-bottom: 10px;
         }
+        table {
+            width: 65%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 12px; /* 추가된 부분: 테이블 내의 텍스트 크기를 작게 설정 */
+            margin: auto;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            border: none; /* 세로줄 투명하게 처리 */
+            border-bottom: 1px dashed #ddd; /* 가로줄을 점선으로 설정 */
+            cursor: pointer;
+        }
+
+        th, td {
+            padding: 10px;
+            line-height: 1.2;
+            text-align: left;
+        }
+
+        th {
+            border-bottom: 1px solid #ddd; /* 아랫줄은 실선으로 설정 */
+        }
+        /* 각 셀에 대한 가로 간격 설정 */
+        td:nth-child(1) {
+            width: 30px;
+        }
+
+        td:nth-child(2) {
+            width: 200px;
+        }
+
+        td:nth-child(3) {
+            width: 80px;
+        }
+        td:nth-child(4) {
+            width: 90px;
+            
+        }
+
+        td:nth-child(5) {
+            width: 150px;
+        }
+
+        td:nth-child(6) { /*삭제부분 간격*/
+            width: 80px;
+        }
+        
     </style>
 </head>
 <body>
-    <?php include 'title.php'; ?>
+    
     <?php
 
     // 데이터베이스 연결
@@ -105,6 +155,7 @@
         </div>
         
     </div>
+    <br>
     <div class="content">
         <div class="center">
             <!-- 티켓북 정보 출력 -->
@@ -139,7 +190,7 @@
                 
         </div>
     </div>
-
+    <br>            
     <div class="content">
         <div class="center">
             <!-- 찜 목록 출력 -->
@@ -176,6 +227,67 @@
             </fieldset>
         </div>    
     </div>
+    <br>
+    <div class="content">
+        <div class="center">
+            <!-- 리뷰 목록 출력 -->
+            <fieldset>
+                <h2>리뷰 목록</h2>
+                <?php
+                // 데이터베이스 연결
+                require_once("dbconfig.php");
+
+                // 리뷰 목록을 가져오는 쿼리
+                $selectReviews = "
+                SELECT boardId, title, rating, memberId, createdAt, content
+                FROM review
+                ORDER BY createdAt DESC
+                ";
+
+                $resultReviews = $conn->query($selectReviews);
+
+                if ($resultReviews->num_rows > 0) {
+                $count = 1; // 리뷰 번호 초기값 설정
+                echo "<table>";
+                echo "<tr>
+                        <th>번호</th>
+                        <th>뮤지컬</th>
+                        <th>별점</th>
+                        <th>작성자</th>
+                        <th>작성시간</th>
+                        <th>삭제</th>
+                    </tr>";
+
+                while ($rowReview = $resultReviews->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>{$count}</td>";
+                    echo "<td>{$rowReview['title']}</td>";
+                    echo "<td>{$rowReview['rating']}</td>";
+                    echo "<td>{$rowReview['memberId']}</td>";
+                    echo "<td>{$rowReview['createdAt']}</td>";
+
+                    // 삭제 버튼 추가
+                    echo "<td>";
+                    echo "<form method='post' action='deleteReview.php'>";
+                    echo "<input type='hidden' name='boardId' value='{$rowReview["boardId"]}'>";
+                    echo "<button type='submit' name='deleteButton' onclick='return confirm(\"삭제하시겠습니까?\")'>삭제</button>";
+                    echo "</form>";
+                    echo "</td>";
+                    $count++;
+
+                    echo "</tr>";
+                }
+                echo "</table>";
+                } else {
+                echo "리뷰가 없습니다.";
+                }
+
+
+                ?>
+            </fieldset>
+        </div>
+    </div>
+
         
 
     <?php

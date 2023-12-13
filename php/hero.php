@@ -139,7 +139,7 @@
             ?>
 
             <div class="text">
-                <font style="cursor: hand" onClick="location.href='./write.php'">리뷰남기기</font>
+                <button style="cursor: pointer;" onclick="location.href='./write.php'">리뷰남기기</button>
             </div>
 
             <!-- 모달 창의 HTML 부분 -->
