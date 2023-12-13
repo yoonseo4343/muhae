@@ -31,6 +31,7 @@ nav a {
 .left-side {
     flex: 1;
     background-color: blue;
+    text-align: center;
 }
 .left-side img {
     width: 100%; /* 이미지 크기 100%로 지정 */

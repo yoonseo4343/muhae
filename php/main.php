@@ -17,9 +17,30 @@
     require_once("dbconfig.php");?>
 
     <div class="content">
-        <div class="left-side">
+        <div class="left-side"  >
             <!-- 베스트 뮤덕 내용을 추가할 부분 -->
             <!-- 티켓북 추가할 부분 -->
+            <tr><th>MY TICKET</th></tr>
+            <?php
+            
+            if ($loggedIn) {
+                $selectSql = "
+                SELECT ticketDate, ticketPicture
+                FROM ticketBook
+                WHERE memberId = '$sessionId'
+                ORDER BY ticketDate DESC
+                LIMIT 3
+                ";
+    
+                $result = $conn->query($selectSql);
+                while ($row = mysqli_fetch_assoc($result)){
+                    $picture = $row['ticketPicture'];
+                    echo "<a href='myTicket.php'>";
+                    echo "<img src='$picture'>";
+                    echo "</a>";
+                }
+            }
+            ?>
         </div>
 
     <div class="center">
