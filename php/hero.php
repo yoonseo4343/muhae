@@ -1,106 +1,185 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-      <title>뭐해? 뮤해!</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뭐해? 뮤해!</title>
+    <!-- 헤더,네비,세션 불러옴 -->
+    <?php include 'title.php'; ?>
     <style>
+        <?php include 'webstyle.css';?> 
+        /* 스타일 불러옴 */
         table {
-            border-top: 1px solid #444444;
+            width: 65%;
             border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 12px; /* 추가된 부분: 테이블 내의 텍스트 크기를 작게 설정 */
+            margin: auto;
         }
 
-        tr {
-            border-bottom: 1px solid #444444;
+        table, th, td {
+            border: 1px solid #ddd;
+            border: none; /* 세로줄 투명하게 처리 */
+            border-bottom: 1px dashed #ddd; /* 가로줄을 점선으로 설정 */
+            cursor: pointer;
+        }
+
+        th, td {
             padding: 10px;
+            line-height: 1.2;
+            text-align: left;
         }
 
-        td {
-            border-bottom: 1px solid #efefef;
-            padding: 10px;
+        th {
+            border-bottom: 1px solid #ddd; /* 아랫줄은 실선으로 설정 */
+        }
+        /* 각 셀에 대한 가로 간격 설정 */
+        td:nth-child(1) {
+            width: 30px;
         }
 
-        table .even {
-            background: #efefef;
+        td:nth-child(2) {
+            width: 200px;
         }
 
-        .text {
-            text-align: center;
-            padding-top: 20px;
-            color: #000000
+        td:nth-child(3) {
+            width: 80px;
+        }
+        td:nth-child(4) {
+            width: 90px;
+            
         }
 
-        .text:hover {
-            text-decoration: underline;
+        td:nth-child(5) {
+            width: 150px;
         }
 
-        a:link {
-            color: #57A0EE;
+        /* 모달 창 스타일 추가 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); /* 어두운 배경색 지정 */
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; 
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
             text-decoration: none;
+            cursor: pointer;
         }
-
-        a:hover {
-            text-decoration: underline;
-        }
-<?php include 'webstyle.css';?>
-
     </style>
 </head>
-
 <body>
-<?php include 'title.php'; ?>
-
-<?php
-    $connect = mysqli_connect('127.0.0.1', 'root', 'password', 'db_board') or die("connect failed");
-    $query = "select * from review order by boardId desc";    //역순 출력
-    $result = mysqli_query($connect, $query);
-    //$result = $connect->query($query);
-    $total = mysqli_num_rows($result);  //result set의 총 레코드(행) 수 반환
-    ?>
-
-    <p style="font-size:25px; text-align:center"><b>게시판</b></p>
-    <table align=center>
-        <thead align="center">
-            <tr>
-                <td width="50" align="center">번호</td>
-                <td width="500" align="center">제목</td>
-                <td width="100" align="center">작성자</td>
-                <td width="200" align="center">날짜</td>
-                <td width="50" align="center">조회수</td>
-            </tr>
-        </thead>
-
-        <tbody>
+    <div class="content">
+        <div class="center">
             <?php
-            while ($rows = mysqli_fetch_assoc($result)) { //result set에서 레코드(행)를 1개씩 리턴
-                if ($total % 2 == 0) {
-            ?>
-                    <tr class="even">
-                        <!--배경색 진하게-->
-                    <?php } else {
-                    ?>
-                    <tr>
-                        <!--배경색 그냥-->
-                    <?php } ?>
-                    <td width="50" align="center"><?php echo $total ?></td>
-                    <td width="500" align="center">
-                        <a href="read.php?number=<?php echo $rows['boardId'] ?>">
-                            <?php echo $rows['title'] ?>
-                    </td>
-                    <td width="100" align="center"><?php echo $rows['memberId'] ?></td>
-                    <td width="200" align="center"><?php echo $rows['createdAt'] ?></td>
-                    </tr>
-                <?php
-                $total--;
-            }
-                ?>
-        </tbody>
-    </table>
+                // 데이터베이스 연결
+                require_once("dbconfig.php");
 
-    <div class=text>
-        <font style="cursor: hand" onClick="location.href='./write.php'">글쓰기</font>
+                // 리뷰 목록을 가져오는 쿼리
+                $selectReviews = "
+                    SELECT boardId, title, rating, memberId, createdAt, content
+                    FROM review
+                    ORDER BY createdAt DESC
+                ";
+
+                $result = $conn->query($selectReviews); 
+
+                // 가져온 리뷰 목록을 테이블로 출력
+                if ($result->num_rows > 0) {
+                    echo "<h2>REVIEW</h2>";
+                    echo "<table>";
+                    echo "<tr>
+                            <th>번호</th>
+                            <th>뮤지컬</th>
+                            <th>별점</th>
+                            <th>작성자</th>
+                            <th>작성시간</th>
+                        </tr>";
+
+                    $count = 1; // 리뷰 번호 초기값 설정
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr onclick='showPopup(\"{$row['boardId']}\", \"{$row['title']}\", \"{$row['rating']}\",
+                             \"{$row['content']}\")'>";
+                        echo "<td>{$count}</td>";
+                        echo "<td>{$row['title']}</td>";
+                        echo "<td>{$row['rating']}</td>";
+                        echo "<td>{$row['memberId']}</td>";
+                        echo "<td>{$row['createdAt']}</td>";
+                        echo "</tr>";
+                        $count++;
+                    }
+                    echo "</table>";
+                } else {
+                    echo "<p>아직 리뷰가 없습니다.</p>";
+                }
+                
+            ?>
+
+            <div class="text">
+                <font style="cursor: hand" onClick="location.href='./write.php'">리뷰남기기</font>
+            </div>
+
+            <!-- 모달 창의 HTML 부분 -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalRating"></p>
+                    <div id="modalContent"></div>
+                </div>
+            </div>
+            <?php
+            // 데이터베이스 연결 종료
+            $conn->close();
+            ?>
+
+            <!-- JavaScript 코드 추가 -->
+            <script>
+                function showPopup(boardId, title, rating, content) {
+                    document.getElementById("modalTitle").innerHTML = title;
+                    document.getElementById("modalRating").innerHTML = rating;
+                    document.getElementById("modalContent").innerHTML = content.replace(/\n/g, '<br>');
+
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "block";
+                }
+
+                function closeModal() {
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "none";
+                }
+                // 모달 창 외부를 클릭하면 모달이 닫히도록 함
+                window.onclick = function (event) {
+                    var modal = document.getElementById("myModal");
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                };
+            </script>
+        </div>
     </div>
 </body>
-
 </html>

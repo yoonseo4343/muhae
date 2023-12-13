@@ -85,11 +85,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <td><label for="rating">별점</label></td>
                                     <td>
                                         <select name="rating" required>
-                                            <option value="1">★☆☆☆☆</option>
-                                            <option value="2">★★☆☆☆</option>
-                                            <option value="3">★★★☆☆</option>
-                                            <option value="4">★★★★☆</option>
-                                            <option value="5">★★★★★</option>
+                                            <option value="★☆☆☆☆">★☆☆☆☆</option>
+                                            <option value="★★☆☆☆">★★☆☆☆</option>
+                                            <option value="★★★☆☆">★★★☆☆</option>
+                                            <option value="★★★★☆">★★★★☆</option>
+                                            <option value="★★★★★">★★★★★</option>
                                         </select>
                                     </td>
                                 </tr>
