@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query_add_user = "INSERT INTO member(memberId, pw, nickName, email) VALUES ('$memberId', '$e_pw', '$nickName', '$email')";
         if (mysqli_query($conn, $query_add_user)) {
             echo '<script>alert("회원가입이 완료되었습니다.");</script>';
+            echo '<script>window.location.href = "login.php";</script>';
         } else {
             echo "Error: " . $query_add_user . "<br>" . mysqli_error($conn);
         }
