@@ -55,8 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conn->query($sql) === TRUE) {
         $lastInsertedId = $conn->insert_id; // 새로 생성된 boardId를 가져옴
-        echo "리뷰가 성공적으로 등록되었습니다. ";
-
+        echo '<script>alert("리뷰가 성공적으로 등록되었습니다.");</script>';
+        echo '<script>window.location.href = "hero.php";</script>';
     } else {
         echo "리뷰 등록에 실패했습니다. 에러: " . $conn->error;
     }
