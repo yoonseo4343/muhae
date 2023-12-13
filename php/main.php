@@ -6,6 +6,7 @@
     <title>뭐해? 뮤해!</title>
     <style>
         <?php include 'webstyle.css';?>
+        <?php include 'slide.css';?>
     </style>
     
 </head>
