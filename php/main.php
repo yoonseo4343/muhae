@@ -42,7 +42,7 @@
             }
             else{
                 echo "<div class='ticket'><a href='myTicket.php'>";
-                echo "<img src='../src/ticket.png'></div>";
+                echo "<img src='../src/ticket.png'></a></div>";
             }
             ?>
 

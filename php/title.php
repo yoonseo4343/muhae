@@ -15,6 +15,7 @@ $sessionId=$_SESSION['id']; //현재 로그인된 회원 아이디 값
 </header>
 
 <nav>
+    <a href="main.php">MAIN</a>
     <a href="musicals.php">MUSICALS</a>
     <a href="hero.php">REVIEW</a>
     <a href="likepage.php">LIKE</a>
