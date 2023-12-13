@@ -35,13 +35,37 @@
                 $result = $conn->query($selectSql);
                 while ($row = mysqli_fetch_assoc($result)){
                     $picture = $row['ticketPicture'];
-                    echo "<a href='myTicket.php'>";
+                    echo "<div class='ticket'><a href='myTicket.php'>";
                     echo "<img src='$picture'>";
-                    echo "</a>";
+                    echo "</a></div>";
                 }
             }
             else{
-                echo "<br>회원가입 후 이용처리";
+                echo "<div class='ticket'><a href='myTicket.php'>";
+                echo "<img src='../src/ticket.png'></div>";
+            }
+            ?>
+
+            <!-- 인기 뮤지컬 리스트 -->
+            <hr>
+            <tr><th>BEST MUSICAL</th></tr>
+            <?php
+            $bestQ="SELECT m.poster, m.musicalId
+            FROM (
+                SELECT l.musicalId, COUNT(*) AS count_likes
+                FROM likeMusical l
+                GROUP BY l.musicalId
+                ORDER BY count_likes DESC
+                LIMIT 3
+            ) AS top_likes
+            JOIN musicals m ON top_likes.musicalId = m.musicalId;";
+            $bestR = mysqli_query($conn, $bestQ);
+            while ($row = mysqli_fetch_assoc($bestR)){
+                $poster = $row['poster'];
+                $musicalId=$row['musicalId'];
+                echo "<a href='musical_detail.php?id=$musicalId'>";
+                echo "<img src='$poster'>";
+                echo "</a>";
             }
             ?>
         </div>

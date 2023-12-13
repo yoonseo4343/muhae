@@ -1,6 +1,14 @@
 /*웹페이지 메인틀 style.css*/
-/* 구역확인을 위한 임시 색상 설정 */
 
+/* 컬러차트 */
+/* 사용법: var(--컬러명) */
+:root {
+    --color1 : #B569BF;
+    --color2 : #94ABF2;
+    --color3 : #CAC9F2;
+    --color4 : #485373;
+    --color5 : #070926;
+  }
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -87,4 +95,14 @@ nav a {
 .pagination a.active {
     background-color: #4CAF50;
     color: white;
+}
+.ticket {
+    position: relative;
+    width: 100%; /* 가로 길이 100%로 설정 */
+}
+
+.ticket img {
+    width: 100%;
+    height: 50%; /* 가로의 절반인 50%로 설정 */
+    object-fit: cover;
 }
