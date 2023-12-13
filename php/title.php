@@ -1,5 +1,6 @@
 <!-- <body> 태그 안에 넣으면 됨. -->
     <!-- 세션시작, 헤더와 네비 기능 -->
+
 <?php
 // 세션 시작
 session_start();
@@ -10,8 +11,10 @@ if($loggedIn){
 $sessionId=$_SESSION['id']; //현재 로그인된 회원 아이디 값
 }
 ?>
-<header>
-    <h1><a href="main.php" style="text-decoration: none; color: inherit;">뭐해? 뮤해!</h1>
+<header >
+    <a href="main.php">
+        <img src="../src/title2.png" style="padding: 25px;height: 70%; width: auto;">
+    </a>
 </header>
 
 <nav>

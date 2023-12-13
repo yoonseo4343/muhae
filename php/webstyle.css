@@ -8,39 +8,48 @@
     --color3 : #CAC9F2;
     --color4 : #485373;
     --color5 : #070926;
+    --color6 : #ffffff;
   }
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: var(--color5);
 }
 header {
-    background-color: #333;
-    color: white;
-    padding: 15px;
+    background-color: var(--color5);
+    height: 150px;
     text-align: center;
 }
 nav {
-    background-color: #f2f2f2;
+    background-color: var(--color5);
     padding: 10px;
     text-align: center;
+    border-bottom: 2px solid rgba(202, 201, 242, 0.6);
 }
 nav a {
     margin: 0 10px;
     text-decoration: none;
-    color: #333;
+    color:var(--color3);
 }
 .content {
     display: flex;
     justify-content: space-between;
-    /* padding: 20px; */
+    padding: 15px;
     margin: 0 15%; /* 여백 추가 */
 }
 .left-side {
     flex: 1;
-    background-color: blue;
+    background-color: var(--color5);
     text-align: center;
+    margin-right: 10px;
 }
+th{
+    color:var(--color1);
+}
+hr {
+    border: 1px solid rgba(202, 201, 242, 0.6);
+  }
 .left-side img {
     width: 100%; /* 이미지 크기 100%로 지정 */
     height: auto; /* 세로 비율에 맞게 자동 조정 */
@@ -59,7 +68,9 @@ nav a {
 }
 .right-side {
     flex: 1;
-    background-color: purple;
+    background-color: var(--color5);    
+    margin-left: 10px;
+
 }
 .right-side img {
     width: 100%; /* 이미지 크기 100%로 지정 */
@@ -85,16 +96,16 @@ nav a {
 }
 
 .pagination a {
-    padding: 8px 16px;
-    margin: 0 5px;
-    border: 1px solid #ddd;
+    padding: 6px 12px;
+    margin: 0 3px;
+    border: 1px solid var(--color1);
     text-decoration: none;
-    color: #333;
+    color: var(--color1);
 }
 
 .pagination a.active {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--color1);
+    color: var(--color3);
 }
 .ticket {
     position: relative;
