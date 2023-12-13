@@ -127,7 +127,34 @@ setInterval(nextSlide, 3000);
                 </tbody>
             </table>
 
-            <!-- 리뷰 내용을 추가할 부분 -->
+            <br>
+
+            <!-- 뮤지컬 컴퍼니 주소 추가 -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>MUSICAL COMPANY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="https://emkmusical.com/" target="_blank">
+                                <img src="../src/emk.jpg" alt="COMPANY">
+                            </a>
+                            <br>
+                            <a href="https://www.odmusical.com/production/list?ca_id=01" target="_blank">
+                                <img src="../src/OD컴퍼니.jpg" alt="COMPANY">
+                            </a>
+                            <br>
+                            <a href="https://www.iseensee.com/Home/Perf/SalePerfList.aspx" target="_blank">
+                                <img src="../src/신시.jpg" alt="COMPANY">
+                            </a>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
