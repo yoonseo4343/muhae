@@ -11,11 +11,8 @@
     </style>
 </head>
 <body>
-    <!-- 헤더,네비 불러옴 / 로그인 검사-->
-<?php 
-include 'title.php'; 
-require_once("checkLog.php");
-?>
+    <!-- 헤더,네비 불러옴 -->
+<?php include 'title.php'; ?>
 
 <div class="content">
     <div class="center">
@@ -41,7 +38,7 @@ require_once("checkLog.php");
         // 결과가 있을 경우 출력
         if ($result->num_rows > 0) {
             echo "<table>";
-            echo "<tr><th>Ticket Picture</th><th>Ticket Date</th></tr>";
+            echo "<tr><th>뮤지컬 사진</th><th>관극 날짜</th></tr>";
 
             while ($row = $result->fetch_assoc()) {
                 $tickets[] = $row;

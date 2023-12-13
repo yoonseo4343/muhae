@@ -48,7 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO ticketBook (memberId, ticketDate, ticketPicture, ticketMemo) VALUES ('$sessionId', '$ticketDate', '$destination', '$ticketMemo')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "티켓이 성공적으로 등록되었습니다.";
+        $lastInsertedId = $conn->insert_id; // 새로 생성된 ticketId를 가져옴
+        echo "티켓이 성공적으로 등록되었습니다. ";
+
     } else {
         echo "티켓 등록에 실패했습니다. 에러: " . $conn->error;
     }
