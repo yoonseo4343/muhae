@@ -4,15 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>뭐해? 뮤해!</title>
+    <?php include 'title.php'; ?>
     <style>
         <?php include 'webstyle.css';?>
         <?php include 'slide.css';?>
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 150%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        /* 모달 내용 스타일 */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            max-width: 800px;
+        }
+
+        /* 닫기 버튼 스타일 */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: -10px;
+            margin-right: -10px;
+        }
+        
+        /* 모달 내용 스타일 */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 40%;
+            max-width: 600px;
+        }
+
+        /* 이미지 크기 조정 */
+        .modal-content img {
+            width: 100%;
+            max-width: 100%; /* 이미지의 최대 넓이를 100%로 설정 */
+            height: auto;
+        }
+
+
+
     </style>
     
 </head>
 <body>
     
-    <?php include 'title.php'; 
+    <?php 
     // 데이터베이스 연결
     require_once("dbconfig.php");?>
 
@@ -136,54 +189,91 @@ function nextSlide() {
 
 // 일정 시간마다 슬라이드 변경
 setInterval(nextSlide, 3000);
-    </script>
-        </div>
 
-        <div class="right-side">
-            <table>
-                <thead>
-                    <tr><th>REVIEW</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td><a href="hero.php" target="_blank"><img src="../src/영웅.jpg" width="200" height="80" alt=""></a></td></tr>
-                    <tr><td><a href="hero.php" target="_blank"><img src="../src/영웅.jpg" width="200" height="80" alt="영웅"></a></td></tr>
-                    <tr><td><a href="hero.php" target="_blank"><img src="../src/영웅.jpg" width="200" height="80" alt="영웅"></a></td></tr>
-                </tbody>
-            </table>
-
-            <br>
-
-            <!-- 뮤지컬 컴퍼니 주소 추가 -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>MUSICAL COMPANY</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <a href="https://emkmusical.com/" target="_blank">
-                                <img src="../src/emk.jpg" alt="COMPANY">
-                            </a>
-                            <br>
-                            <a href="https://www.odmusical.com/production/list?ca_id=01" target="_blank">
-                                <img src="../src/OD컴퍼니.jpg" alt="COMPANY">
-                            </a>
-                            <br>
-                            <a href="https://www.iseensee.com/Home/Perf/SalePerfList.aspx" target="_blank">
-                                <img src="../src/신시.jpg" alt="COMPANY">
-                            </a>
-                            
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+</script>
     </div>
 
-    <?php // 데이터베이스 연결 종료
-        $conn->close();
-    ?>
+    <div class="right-side">
+        <table>
+            <thead>
+                <tr><th>REVIEW</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><a href="hero.php" target="_blank"><img src="../src/영웅.jpg" width="200" height="80" alt=""></a></td></tr>
+                <tr><td><a href="hero.php" target="_blank"><img src="../src/영웅.jpg" width="200" height="80" alt="영웅"></a></td></tr>
+                <tr><td><a href="hero.php" target="_blank"><img src="../src/영웅.jpg" width="200" height="80" alt="영웅"></a></td></tr>
+            </tbody>
+        </table>
+
+        <br>
+
+        <!-- 뮤지컬 컴퍼니 주소 추가 -->
+        <table>
+            <thead>
+                <tr>
+                    <th>MUSICAL COMPANY</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="https://emkmusical.com/" target="_blank">
+                            <img src="../src/emk.jpg" alt="COMPANY">
+                        </a>
+                        <br>
+                        <a href="https://www.odmusical.com/production/list?ca_id=01" target="_blank">
+                            <img src="../src/OD컴퍼니.jpg" alt="COMPANY">
+                        </a>
+                        <br>
+                        <a href="https://www.iseensee.com/Home/Perf/SalePerfList.aspx" target="_blank">
+                            <img src="../src/신시.jpg" alt="COMPANY">
+                        </a>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img src="../src/레베카.jpg" alt="이미지 설명" >
+        <p>뮤지컬 대관 할인 서비스!!!!</p>
+        <P>선착순 50명 한정</p>
+    </div>
+</div>
+
+<script>
+    // 모달 JavaScript
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById('myModal');
+        openModal(); // 페이지 로딩 시에 모달 열기
+
+        // 모달 열기
+        function openModal() {
+            modal.style.display = 'block';
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // 모달 외부 클릭 시 모달 닫기
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+    });
+
+</script>
+
+
+<?php // 데이터베이스 연결 종료
+    $conn->close();
+?>
 </body>
 </html>
