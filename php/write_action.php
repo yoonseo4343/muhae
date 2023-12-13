@@ -1,8 +1,7 @@
 <?php
 require_once("dbconfig.php");
 
-$id = $_POST['name'];                   //Writer
-$pw = $_POST['pw'];                     //Password
+$memberId = $_POST['memberId'];                   //Writer
 $title = $_POST['title'];               //Title
 $content = $_POST['content'];           //Content
 $createdAt = date('Y-m-d H:i:s');            //Date
@@ -10,8 +9,8 @@ $createdAt = date('Y-m-d H:i:s');            //Date
 $URL = './hero.php';                   //return URL
 
 
-$query = "INSERT INTO board (number, title, content, date, hit, id, password) 
-        values(null,'$title', '$content', '$createdAt', 0, '$id', '$pw')";
+$query = "INSERT INTO review (boardId, title, content, date, memberId) 
+        values(null,'$title', '$content', '$createdAt','$memberId')";
 
 
 $result = $connect->query($query);
