@@ -65,7 +65,10 @@
                     $likeRe = $conn->query($likeSql);
                     echo '<script>alert("관심 뮤지컬로 등록되었습니다.");</script>';
                 } else {
-                    echo '<script>alert("이미 등록된 뮤지컬입니다.");</script>';
+                    // 이미 등록된 경우, 좋아요 취소를 위한 데이터 삭제
+                    $deleteLikeSql = "DELETE FROM likeMusical WHERE memberId = '$memberId' AND musicalId = '$musicalId'";
+                    $deleteResult = $conn->query($deleteLikeSql);
+                    echo '<script>alert("관심 뮤지컬로 등록이 취소되었습니다.");</script>';
                 }
             }
             ?>
