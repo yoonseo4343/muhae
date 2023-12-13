@@ -73,7 +73,10 @@
         <div class="left-side"  >
             <!-- 베스트 뮤덕 내용을 추가할 부분 -->
             <!-- 티켓북 추가할 부분 -->
-            <tr><th>MY TICKET</th></tr>
+            
+            <table>
+                <thead>
+            <tr><th>MY TICKET</th></tr></thead><td>
             <?php
             
             if ($loggedIn) {
@@ -86,22 +89,31 @@
                 ";
     
                 $result = $conn->query($selectSql);
-                while ($row = mysqli_fetch_assoc($result)){
-                    $picture = $row['ticketPicture'];
+                if ($result && $result->num_rows > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $picture = $row['ticketPicture'];
+                        echo "<div class='ticket'><a href='myTicket.php'>";
+                        echo "<img src='$picture'>";
+                        echo "</a></div>";
+                    }
+                } else {
+                    // Handle case when there are no results
                     echo "<div class='ticket'><a href='myTicket.php'>";
-                    echo "<img src='$picture'>";
-                    echo "</a></div>";
+                    echo "<img src='../src/ticket.png'></a></div>";
                 }
-            }
-            else{
+            } else {
+                // Handle case when the user is not logged in
                 echo "<div class='ticket'><a href='myTicket.php'>";
                 echo "<img src='../src/ticket.png'></a></div>";
             }
-            ?>
+            
+            ?></td></table>
 
             <!-- 인기 뮤지컬 리스트 -->
             <hr>
-            <tr><th>BEST MUSICAL</th></tr>
+            <table>
+                <thead>
+            <tr><th>BEST MUSICAL</th></tr></thead><td>
             <?php
             $bestQ="SELECT m.poster, m.musicalId
             FROM (
@@ -120,7 +132,7 @@
                 echo "<img src='$poster'>";
                 echo "</a>";
             }
-            ?>
+            ?></td></table>
         </div>
 
     <div class="center">
@@ -205,7 +217,7 @@ setInterval(nextSlide, 3000);
             </tbody>
         </table>
 
-        <br>
+        <hr>
 
         <!-- 뮤지컬 컴퍼니 주소 추가 -->
         <table>
