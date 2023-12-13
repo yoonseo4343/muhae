@@ -88,7 +88,9 @@
 
                 echo "</table>";
             } else {
-                echo "티켓이 없습니다.";
+                // echo "티켓이 없습니다.";
+                echo "<img src='../src/empty.png' alt='no file' style='width: 15%;'>";
+
             }
             echo "<script>";
             echo "var tickets = " . json_encode($tickets) . ";";

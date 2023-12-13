@@ -63,7 +63,8 @@
                 }
                 echo "</div>";
             } else {
-                echo "관심 뮤지컬이 없습니다.";
+                // echo "관심 뮤지컬이 없습니다.";
+                echo "<img src='../src/empty.png' alt='no file' style='width: 15%;'>";
             }
 
             // 데이터베이스 연결 종료
