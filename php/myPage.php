@@ -200,7 +200,8 @@
                         echo "</div>";
                     }
                 } else {
-                    echo "티켓이 없습니다.";
+                    // echo "티켓이 없습니다.";
+                    echo "<img src='../src/empty.png' alt='no file' style='width: 15%; '>";
                 }
                 ?>
             </fieldset>
@@ -238,7 +239,8 @@
                     }
                     echo "</div>";
                 } else {
-                    echo "찜한 뮤지컬이 없습니다.";
+                    // echo "찜한 뮤지컬이 없습니다.";
+                    echo "<img src='../src/empty.png' alt='no file' style='width: 15%; '>";
                 }
                 ?>
             </fieldset>
@@ -252,8 +254,6 @@
                 <h2>작성한 리뷰</h2>
                 <a href='write.php' ><img src='../src/edit.png' style='width: 20px; height: 20px;'></a><br>
                 <?php
-                // 데이터베이스 연결
-                require_once("dbconfig.php");
 
                 // 리뷰 목록을 가져오는 쿼리
                 $selectReviews = "
@@ -298,7 +298,8 @@
                     }
                     echo "</table>";
                 } else {
-                    echo "리뷰가 없습니다.";
+                    // echo "리뷰가 없습니다.";
+                    echo "<img src='../src/empty.png' alt='no file' style='width: 15%;'>";
                 }
                 ?>
             </fieldset>
