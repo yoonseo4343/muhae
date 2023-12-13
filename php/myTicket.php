@@ -1,17 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
 <!-- 헤더,네비 불러옴 / 로그인 검사-->
 <?php 
     include 'title.php'; 
     require_once("checkLog.php");
     ?>
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>뭐해? 뮤해!</title>
-    <!-- 헤더,네비 불러옴 -->
-    <?php include 'title.php'; ?>
     <style>
         <?php include 'webstyle.css';?> 
         <?php include 'calendar.css';?>
@@ -54,11 +51,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 25066c364db4ab39247c4960e12908bfd0fc9cd0
 
     <div class="content">
         <div class="left-side">
