@@ -25,8 +25,8 @@ nav a {
 .content {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    margin: 0 150px; /* 여백 추가 */
+    /* padding: 20px; */
+    margin: 0 15%; /* 여백 추가 */
 }
 .left-side {
     flex: 1;
