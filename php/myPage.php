@@ -50,7 +50,6 @@
             border: 1px solid #ddd;
             border: none; /* 세로줄 투명하게 처리 */
             border-bottom: 1px dashed #ddd; /* 가로줄을 점선으로 설정 */
-            cursor: pointer;
         }
 
         th,
@@ -88,6 +87,11 @@
         td:nth-child(6) {
             /*삭제부분 간격*/
             width: 80px;
+        }
+        .button-icon{
+            width: 20px; 
+            height: 20px; padding: 0; border: none; background: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -149,14 +153,15 @@
             <!-- 회원 정보 수정 폼 -->
             <form method="post" action="myPage.php">
                 <fieldset>
-                    <h2>내 정보 수정</h2>
+                    <h2>정보 수정</h2>
                     <p><label for="id">아이디:</label>
                         <input type="text" id="id" name="id" value="<?php echo $userId; ?>" readonly="readonly"></p>
                     <p><label for="email">Email:</label>
                         <input type="text" id="email" name="email" value="<?php echo $userEmail; ?>"></p>
                     <p><label for="nickname">Nickname:</label>
                         <input type="text" id="nickname" name="nickname" value="<?php echo $userNick; ?>"></p>
-                    <input type="submit" value="회원 수정">
+                    <button type="submit" name="updateButton" class="button-icon">
+            <img src="../src/edit.png" alt="수정" style='width: 100%; height: 100%;'>
                 </fieldset>
 
             </form>
@@ -169,6 +174,8 @@
             <!-- 티켓북 정보 출력 -->
             <fieldset>
                 <h2>티켓북</h2>
+                <a href='ticketUpload.php' ><img src='../src/edit.png' style='width: 20px; height: 20px;'></a><br>
+
                 <?php
                 if ($ticketResult->num_rows > 0) {
                     while ($ticketRow = $ticketResult->fetch_assoc()) {
@@ -185,8 +192,7 @@
                         // 삭제 버튼 추가
                         echo "<form method='post' action='delete_ticket.php'>";
                         echo "<input type='hidden' name='ticketId' value='$ticketId'>";
-                        echo "<button type='submit' name='deleteButton' style='width: 20px; 
-                        height: 20px; padding: 0; border: none; background: none;'><img src='../src/del.png' 
+                        echo "<button type='submit' name='deleteButton' class='button-icon'><img src='../src/del.png' 
                         alt='삭제' style='width: 100%; height: 100%;'></button>
                         ";
                         echo "</form>";
@@ -206,7 +212,7 @@
         <div class="center">
             <!-- 찜 목록 출력 -->
             <fieldset>
-                <h2>찜 목록</h2>
+                <h2>관심 뮤지컬</h2>
                 <?php
                 // 사용자가 찜한 뮤지컬 목록 가져오기
                 $likedMusicalsQuery = "SELECT musicals.poster, musicals.musicalId
@@ -226,7 +232,7 @@
                         // 앨범 형식으로 출력
                         echo "<div class='album-item'>";
                         echo "<a href='musical_detail.php?id=$musicalId'>";
-                        echo "<img src='$poster' alt='$musicalId Poster'>";
+                        echo "<img src='$poster' alt='$musicalId Poster' >";
                         echo "</a>";
                         echo "</div>";
                     }
@@ -243,7 +249,8 @@
         <div class="center">
             <!-- 리뷰 목록 출력 -->
             <fieldset>
-                <h2>리뷰 목록</h2>
+                <h2>작성한 리뷰</h2>
+                <a href='write.php' ><img src='../src/edit.png' style='width: 20px; height: 20px;'></a><br>
                 <?php
                 // 데이터베이스 연결
                 require_once("dbconfig.php");
@@ -252,6 +259,7 @@
                 $selectReviews = "
                 SELECT boardId, title, rating, memberId, createdAt, content
                 FROM review
+                WHERE memberId='$sessionId'
                 ORDER BY createdAt DESC
                 ";
 
@@ -281,8 +289,7 @@
                         echo "<td>";
                         echo "<form method='post' action='deleteReview.php'>";
                         echo "<input type='hidden' name='boardId' value='{$rowReview["boardId"]}'>";
-                        echo "<button type='submit' name='deleteButton' style='width: 20px; 
-                        height: 20px; padding: 0; border: none; background: none;'><img src='../src/del.png' alt='삭제'></button>";
+                        echo "<button type='submit' name='deleteButton' class='button-icon'><img src='../src/del.png' alt='삭제'></button>";
                         echo "</form>";
                         echo "</td>";
                         $count++;
