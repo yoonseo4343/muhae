@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- 티켓 등록 폼 -->
 <form method="post" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
-<label for="ticketDate">관극 날짜 : </label>
+    <label for="ticketDate">관극 날짜 : </label>
     <input type="date" name="ticketDate" required><br><br>
 
     <label for="ticketPicture">사진 첨부 : </label>
@@ -74,8 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <input class="button" type="submit" value="등록하기">
 </form><br>
-
-<a href="myTicket.php"><button>돌아가기</button></a>
+<a href="myTicket.php"><button class="button">돌아가기</button></a>
     </div>
 </div>
 </body>

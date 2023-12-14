@@ -148,34 +148,34 @@
 
     ?>
 
-    <div class="content">
+    <div class="upload_content">
         <div class="center">
 	<div class="myPage_back">
             <!-- 회원 정보 수정 폼 -->
             <form method="post" action="myPage.php">
-                    <h2>정보 수정</h2>
-                    <p><label for="id">아이디:</label>
+                    <br><h2>정보 수정</h2>
+                    <p><label for="id">아이디 : </label>
                         <input type="text" id="id" name="id" value="<?php echo $userId; ?>" readonly="readonly"></p>
-                    <p><label for="email">Email:</label>
+                    <p><label for="email">Email : </label>
                         <input type="text" id="email" name="email" value="<?php echo $userEmail; ?>"></p>
-                    <p><label for="nickname">Nickname:</label>
+                    <p><label for="nickname">Nickname : </label>
                         <input type="text" id="nickname" name="nickname" value="<?php echo $userNick; ?>"></p>
                     <button type="submit" name="updateButton" class="button-icon">
             <img src="../src/edit.png" alt="수정" style='width: 100%; height: 100%;'>
 
 
-            </form>
+            </form><br>
 </div>
         </div>
 
     </div>
     <br>
-    <div class="content">
+    <div class="upload_content">
         <div class="center">
 	<div class="myPage_back">
             <!-- 티켓북 정보 출력 -->
           
-                <h2>티켓북</h2>
+                <br><h2>티켓북</h2>
                 <a href='ticketUpload.php' ><img src='../src/edit.png' style='width: 20px; height: 20px;'></a><br>
 
                 <?php
@@ -212,12 +212,12 @@
     </div>
 </div>
     <br>
-    <div class="content">
+    <div class="upload_content">
         <div class="center">
 	<div class="myPage_back">
             <!-- 찜 목록 출력 -->
 
-                <h2>관심 뮤지컬</h2>
+                <br><h2>관심 뮤지컬</h2>
                 <?php
                 // 사용자가 찜한 뮤지컬 목록 가져오기
                 $likedMusicalsQuery = "SELECT musicals.poster, musicals.musicalId
@@ -252,11 +252,11 @@
     </div>
 </div>
     <br>
-    <div class="content">
+    <div class="upload_content">
         <div class="center">
 	<div class="myPage_back">
             <!-- 리뷰 목록 출력 -->
-                <h2>작성한 리뷰</h2>
+                <br><h2>작성한 리뷰</h2>
                 <a href='write.php' ><img src='../src/edit.png' style='width: 20px; height: 20px;'></a><br>
                 <?php
 
