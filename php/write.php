@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- method : POST!!! (GET X) -->
         <table style="padding-top:50px" align=center width=auto border=0 cellpadding=2>
             <tr>
-                <td style="height:40; float:center; background-color:#3C3C3C">
+                <td style="height:40; float:center; background-color:#CAC9F2">
                     <p style="font-size:25px; text-align:center; color:white; margin-top:15px; margin-bottom:15px"><b>리뷰 작성하기</b></p>
                 </td>
             </tr>
@@ -100,13 +100,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </table>
 
                     <center>
-                        <input style="height:26px; font-size:16px;" type="submit" value="등록하기">
+                        <input class="button" type="submit" value="등록하기">
                     </center>
                 </td>
             </tr>
         </table>
     </form>
-    <a href="hero.php"><button>돌아가기</button></a>
+    <a href="hero.php"><button class="button">돌아가기</button></a>
     </div></div>
 </body>
 

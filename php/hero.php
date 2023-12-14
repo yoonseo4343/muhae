@@ -25,6 +25,7 @@
         }
 
         th, td {
+            color: var(--color3);
             padding: 10px;
             line-height: 1.2;
             text-align: left;

@@ -59,7 +59,7 @@
                 $totalPages = ceil($totalItems / $itemsPerPage);
                 echo "<div class='pagination'>";
                 for ($i = 1; $i <= $totalPages; $i++) {
-                    echo "<a href='?page=$i' " . ($i == $currentPage ? 'class="active"' : '') . ">$i</a>";
+                    echo "<a href='?page=$i' " . ($i == $currentPage ? 'class="current"' : '') . ">$i</a>";
                 }
                 echo "</div>";
             } else {
