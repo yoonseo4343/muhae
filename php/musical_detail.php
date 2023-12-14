@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>뭐해? 뮤해!</title>
     <style>
-        <?php include 'webstyle.css';?> 
+        <?php include 'webstyle.css';?>
+        td{
+            color:var(--color3);
+        } 
         /* 스타일 불러옴 */
     </style>
 </head>
@@ -81,22 +84,24 @@
             $result2 = $conn->query($sql2);
             
             //내용 출력
-            if ($result2->num_rows > 0) {
-                while ($row = $result2->fetch_assoc()) {
-                    echo "<p><strong>Musical Name:</strong> {$row['musicalName']}</p>";
-                    echo "<p><strong>Open Date:</strong> {$row['openDate']}</p>";
-                    echo "<p><strong>Close Date:</strong> {$row['closeDate']}</p>";
-                    echo "<p><strong>Theater Name:</strong> {$row['theaterName']}</p>";
-                    echo "<p><strong>Actors:</strong> {$row['actors']}</p>";
-                    echo "<p><strong>Running Time:</strong> {$row['runningTime']}</p>";
-                    echo "<p><strong>Age:</strong> {$row['age']}</p>";
-                    echo "<p><strong>Price:</strong> {$row['price']}</p>";
-                    echo "<p><strong>Musical Info:</strong> {$row['musicalInfo']}</p>";
-                    echo "<p><strong>Musical State:</strong> {$row['musicalState']}</p>";
-                }
-            } else {
-                echo "뮤지컬 정보가 없습니다.";
-            }
+    if ($result2->num_rows > 0) {
+        echo '<table>';
+        while ($row = $result2->fetch_assoc()) {
+            echo "<tr><td><strong>Musical Name:</strong></td><td>{$row['musicalName']}</td></tr>";
+            echo "<tr><td><strong>Open Date:</strong></td><td>{$row['openDate']}</td></tr>";
+            echo "<tr><td><strong>Close Date:</strong></td><td>{$row['closeDate']}</td></tr>";
+            echo "<tr><td><strong>Theater Name:</strong></td><td>{$row['theaterName']}</td></tr>";
+            echo "<tr><td><strong>Actors:</strong></td><td>{$row['actors']}</td></tr>";
+            echo "<tr><td><strong>Running Time:</strong></td><td>{$row['runningTime']}</td></tr>";
+            echo "<tr><td><strong>Age:</strong></td><td>{$row['age']}</td></tr>";
+            echo "<tr><td><strong>Price:</strong></td><td>{$row['price']}</td></tr>";
+            echo "<tr><td><strong>Musical Info:</strong></td><td>{$row['musicalInfo']}</td></tr>";
+            echo "<tr><td><strong>Musical State:</strong></td><td>{$row['musicalState']}</td></tr>";
+        }
+        echo '</table>';
+    } else {
+        echo "뮤지컬 정보가 없습니다.";
+    }
             // 데이터베이스 연결 종료
             $conn->close();
             ?>
