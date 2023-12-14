@@ -10,6 +10,7 @@
 <?php include 'title.php'; ?>
 <div class="content">
     <div class="center">
+        <div class="myPage_back">
     <?php
 
    // 데이터베이스 연결
@@ -73,5 +74,6 @@
     <button type="submit">로그인</button>
     <a href="register.php" class="ca">회원 가입</a>
     </form>
+    </div></div></div>
 </body>
 </html>
