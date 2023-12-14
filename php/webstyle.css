@@ -10,6 +10,7 @@
     --color5 : #070926;
     --color6 : #ffffff;
   }
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -26,6 +27,8 @@ nav {
     padding: 10px;
     text-align: center;
     border-bottom: 2px solid rgba(202, 201, 242, 0.6);
+	position: sticky;
+	top: 0rem;
 }
 nav a {
     margin: 0 10px;
@@ -37,6 +40,7 @@ nav a {
     justify-content: space-between;
     padding: 15px;
     margin: 0 15%; /* 여백 추가 */
+
 }
 .left-side {
     flex: 1;
@@ -56,7 +60,7 @@ hr {
 }
 .center {
     flex: 3;
-    background-color: var(--color3);
+    background-color: var(--color5);
     text-align: center;
 }
 .center img {
@@ -69,9 +73,7 @@ hr {
 .right-side {
     flex: 1;
     background-color: var(--color5);    
-    text-align: center;
     margin-left: 10px;
-    
 
 }
 .right-side img {
@@ -95,19 +97,29 @@ hr {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+color: #fff;
+	font-size: 1.2rem;
+	text-align: center;
 }
 
-.pagination a {
-    padding: 6px 12px;
-    margin: 0 3px;
-    border: 1px solid var(--color1);
-    text-decoration: none;
-    color: var(--color1);
+.pagination a:hover{
+	background: var(--color4);
+	color: #fff;
 }
 
-.pagination a.active {
-    background-color: var(--color1);
-    color: var(--color3);
+.pagination a,
+.pagination .current {
+	border-radius: 50%;
+	padding-top: 4px;
+	display: inline-block;
+	width: 30px;
+	height:30px;
+	margin: 0 7px;
+}
+
+.pagination .current {
+	background: #ccc;
+	color: #fff;
 }
 .ticket {
     position: relative;
@@ -123,3 +135,50 @@ a {
     color: inherit; /* 기본 색상 유지 */
     text-decoration: none; /* 기본 밑줄 제거 */
 }
+.my_ticket{
+	border: 1.5px dashed rgba(202, 201, 242, 0.6);
+	border-radius: 5px 5px 5px 5px;
+	font-family: 'Dhurjati', cursive;
+	font-size: 1.5rem;
+
+}
+
+.mucompany{
+	border: 1.5px dashed rgba(202, 201, 242, 0.6);
+
+	border-radius: 5px 5px 5px 5px;
+	font-family: 'Dhurjati', cursive;
+	font-size: 1.25rem;
+}
+
+.img_company {
+	transition: .1s;
+
+}
+
+.img_company:hover {
+	filter: grayscale(1);
+	transform: scale(1.1);
+
+}
+
+.button {
+	border-radius: 5px 5px 5px 5px;
+	background-color: var(--color3);
+
+
+}
+
+.heart {
+	border-radius: 5px 5px 5px 5px;
+	background-color: var(--color3);
+}
+.myPage_back {
+	background-color: var(--color4);
+	outline: 2px solid var(--color2);
+	border-radius: 5px 5px 5px 5px;
+	padding-left: 5px;
+
+
+
+	}
