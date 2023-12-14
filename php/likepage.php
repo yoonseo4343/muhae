@@ -1,3 +1,9 @@
+    <!-- 헤더,네비 불러옴 / 로그인 검사-->
+    <?php 
+    include 'title.php'; 
+    require_once("checkLog.php");
+    ?>
+
 <!-- 이걸 복사해서 사용하면 좋을 듯 필요한거 다 들어감 아마 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +17,7 @@
     </style>
 </head>
 <body>
-    <!-- 헤더,네비 불러옴 / 로그인 검사-->
-    <?php 
-    include 'title.php'; 
-    require_once("checkLog.php");
-    ?>
+
 
     <div class="content">
         <div class="center">

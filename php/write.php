@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-
+    <!-- 헤더,네비 불러옴 / 로그인 검사-->
+    <?php 
+    include 'title.php'; 
+    require_once("checkLog.php");
+    ?>
 <head>
     <meta charset='utf-8'>
       <title>뭐해? 뮤해!</title>
@@ -33,7 +37,6 @@
 </head>
 
 <body>
-<?php include 'title.php'; ?>
 
 <div class="content">
     <div class="center">

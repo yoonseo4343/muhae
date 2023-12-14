@@ -103,8 +103,6 @@
     // 데이터베이스 연결
     require_once("dbconfig.php");
 
-    // 회원 아이디 가져오기
-    $loggedInUserId = $_SESSION['id'];
 
     // POST로 전송된 폼 데이터 확인
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -113,7 +111,7 @@
         $newNickname = $_POST["nickname"];
 
         // SQL 쿼리를 사용하여 회원 정보 업데이트
-        $updateSql = "UPDATE member SET email = '$newEmail', nickName = '$newNickname' WHERE memberId = '$loggedInUserId'";
+        $updateSql = "UPDATE member SET email = '$newEmail', nickName = '$newNickname' WHERE memberId = '$sessionId'";
         $updateResult = $conn->query($updateSql);
 
         if ($updateResult) {
@@ -125,7 +123,7 @@
     }
 
     // 현재 회원 정보 조회 쿼리
-    $sql = "SELECT * FROM member WHERE memberId = '$loggedInUserId'";
+    $sql = "SELECT * FROM member WHERE memberId = '$sessionId'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -143,7 +141,7 @@
 
 
     // 티켓북 정보 조회 쿼리
-    $ticketQuery = "SELECT ticketId, ticketPicture, ticketDate FROM ticketBook WHERE memberId = '$loggedInUserId'";
+    $ticketQuery = "SELECT ticketId, ticketPicture, ticketDate FROM ticketBook WHERE memberId = '$sessionId'";
     $ticketResult = $conn->query($ticketQuery);
 
     ?>
@@ -177,7 +175,6 @@
           
                 <br><h2>티켓북</h2>
                 <a href='ticketUpload.php' ><img src='../src/edit.png' style='width: 20px; height: 20px;'></a><br>
-
                 <?php
                 if ($ticketResult->num_rows > 0) {
                     while ($ticketRow = $ticketResult->fetch_assoc()) {
@@ -187,9 +184,8 @@
 
                         // 티켓 정보를 화면에 출력
                         echo "<div class='ticket-item'>";
-                        echo "<div class='ticket-group'>";
                         echo "<img src='$ticketPicture' alt='Ticket Picture'>";
-                        echo "<p>Date: $ticketDate</p>";
+                        echo "<p> $ticketDate</p>";
 
                         // 삭제 버튼 추가
                         echo "<form method='post' action='delete_ticket.php'>";
@@ -199,15 +195,12 @@
                         ";
                         echo "</form>";
                         echo "</div>";
-                        echo "</div>";
                     }
                 } else {
                     // echo "티켓이 없습니다.";
                     echo "<img src='../src/empty.png' alt='no file' style='width: 15%; '>";
                 }
                 ?>
-          
-
         </div>
     </div>
 </div>
@@ -223,7 +216,7 @@
                 $likedMusicalsQuery = "SELECT musicals.poster, musicals.musicalId
                     FROM musicals
                     JOIN likeMusical ON musicals.musicalId = likeMusical.musicalId
-                    WHERE likeMusical.memberId = '$loggedInUserId'";
+                    WHERE likeMusical.memberId = '$sessionId'";
 
                 $likedMusicalsResult = mysqli_query($conn, $likedMusicalsQuery);
 
@@ -307,7 +300,7 @@
                     echo "<img src='../src/empty.png' alt='no file' style='width: 15%;'>";
                 }
                 ?>
-
+<br>
         </div>
     </div>
 </div>

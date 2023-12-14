@@ -73,7 +73,7 @@ color:var(--color3);
     
 </head>
 <body>
-    
+<link href="https://fonts.googleapis.com/css2?family=Dhurjati&family=Diphylleia&family=Gasoek+One&display=swap" rel="stylesheet">
     <?php 
     // 데이터베이스 연결
     require_once("dbconfig.php");?>
@@ -85,7 +85,7 @@ color:var(--color3);
             
             <table class="my_ticket">
                 <thead>
-            <tr><th>MY TICKET</th></tr></thead><td>
+            <tr><th><div class="font">MY TICKET</div></th></tr></thead><td>
             <?php
             
             if ($loggedIn) {
@@ -123,8 +123,7 @@ color:var(--color3);
 
             <table class="my_ticket">
                 <thead>
-            <tr><th>BEST MUSICAL</th></tr></thead><td>
-<link href="https://fonts.googleapis.com/css2?family=Dhurjati&family=Diphylleia&family=Gasoek+One&display=swap" rel="stylesheet">
+            <tr><th><div class="font">BEST MUSICAL</div></th></tr></thead><td>
             <?php
             $bestQ="SELECT m.poster, m.musicalId
             FROM (
@@ -216,11 +215,11 @@ color:var(--color3);
         </script>
     </div>
             
-    <div class="right-side">
-        <table class="my_ticket">
+    <div class="right-side"><div class="my_ticket">
+        <table>
             <!-- 리뷰 목록을 가져오는 쿼리 -->
                 <thead>
-                    <tr><th>REVIEW</th></tr></thead><td>
+                    <tr><th><div class="font">REVIEW<div></th></tr></thead><td>
                 <?php
                 
                     $selectReviews = "
@@ -256,7 +255,7 @@ color:var(--color3);
                         echo "<img src='../src/ticket.png'></a></div>";
                     }
                 ?></td>
-        </table>
+        </table><br></div>
 <p>
 
 
