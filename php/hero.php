@@ -137,12 +137,12 @@
                 }
                 
             ?>
+<br>
 
             <div class="text">
-                <button style="cursor: pointer;" onclick="location.href='./write.php'">리뷰남기기</button>
-            </div>
-
-            <!-- 모달 창의 HTML 부분 -->
+                <button class="button" style="cursor: pointer;" onclick="location.href='./write.php'">리뷰남기기</button>
+            </div><br>
+         <!-- 모달 창의 HTML 부분 -->
             <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close" onclick="closeModal()">&times;</span>

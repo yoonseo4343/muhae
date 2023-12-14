@@ -150,9 +150,9 @@
 
     <div class="content">
         <div class="center">
+	<div class="myPage_back">
             <!-- 회원 정보 수정 폼 -->
             <form method="post" action="myPage.php">
-                <fieldset>
                     <h2>정보 수정</h2>
                     <p><label for="id">아이디:</label>
                         <input type="text" id="id" name="id" value="<?php echo $userId; ?>" readonly="readonly"></p>
@@ -162,17 +162,19 @@
                         <input type="text" id="nickname" name="nickname" value="<?php echo $userNick; ?>"></p>
                     <button type="submit" name="updateButton" class="button-icon">
             <img src="../src/edit.png" alt="수정" style='width: 100%; height: 100%;'>
-                </fieldset>
+
 
             </form>
+</div>
         </div>
 
     </div>
     <br>
     <div class="content">
         <div class="center">
+	<div class="myPage_back">
             <!-- 티켓북 정보 출력 -->
-            <fieldset>
+          
                 <h2>티켓북</h2>
                 <a href='ticketUpload.php' ><img src='../src/edit.png' style='width: 20px; height: 20px;'></a><br>
 
@@ -204,15 +206,17 @@
                     echo "<img src='../src/empty.png' alt='no file' style='width: 15%; '>";
                 }
                 ?>
-            </fieldset>
+          
 
         </div>
     </div>
+</div>
     <br>
     <div class="content">
         <div class="center">
+	<div class="myPage_back">
             <!-- 찜 목록 출력 -->
-            <fieldset>
+
                 <h2>관심 뮤지컬</h2>
                 <?php
                 // 사용자가 찜한 뮤지컬 목록 가져오기
@@ -243,14 +247,15 @@
                     echo "<img src='../src/empty.png' alt='no file' style='width: 15%; '>";
                 }
                 ?>
-            </fieldset>
+
         </div>
     </div>
+</div>
     <br>
     <div class="content">
         <div class="center">
+	<div class="myPage_back">
             <!-- 리뷰 목록 출력 -->
-            <fieldset>
                 <h2>작성한 리뷰</h2>
                 <a href='write.php' ><img src='../src/edit.png' style='width: 20px; height: 20px;'></a><br>
                 <?php
@@ -302,9 +307,10 @@
                     echo "<img src='../src/empty.png' alt='no file' style='width: 15%;'>";
                 }
                 ?>
-            </fieldset>
+
         </div>
     </div>
+</div>
 
 
 

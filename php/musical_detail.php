@@ -9,6 +9,19 @@
         td{
             color:var(--color3);
         } 
+        td:nth-child(1) {
+            width: 50px;
+        }
+        /* 좌측 정렬 스타일 추가 */
+        .right-side {
+            text-align: left;
+        }
+        /* 뮤지컬 헤더 스타일 추가 */
+        .titleB {
+            display: flex;
+            align-items: center;
+        }
+
         /* 스타일 불러옴 */
     </style>
 </head>
@@ -42,12 +55,7 @@
             ?>
         </div>
         <div class="right-side">
-            <!-- 좋아요 버튼 폼 -->
-            <form method="post" action="">
-                <input type="hidden" name="sessionId" value="<?php echo $sessionId; ?>">
-                <input type="hidden" name="musicalId" value="<?php echo $id; ?>">
-                <button type="submit" name="likeButton" class="heart">LIKE♥</button>
-            </form>
+            
 
             <?php
             // 좋아요 버튼이 눌렸을 때 처리
@@ -84,22 +92,38 @@
             $result2 = $conn->query($sql2);
             
             //내용 출력
-    if ($result2->num_rows > 0) {
-        echo '<table>';
-        while ($row = $result2->fetch_assoc()) {
-            echo "<tr><td><strong>Musical Name:</strong></td><td>{$row['musicalName']}</td></tr>";
-            echo "<tr><td><strong>Open Date:</strong></td><td>{$row['openDate']}</td></tr>";
-            echo "<tr><td><strong>Close Date:</strong></td><td>{$row['closeDate']}</td></tr>";
-            echo "<tr><td><strong>Theater Name:</strong></td><td>{$row['theaterName']}</td></tr>";
-            echo "<tr><td><strong>Actors:</strong></td><td>{$row['actors']}</td></tr>";
-            echo "<tr><td><strong>Running Time:</strong></td><td>{$row['runningTime']}</td></tr>";
-            echo "<tr><td><strong>Age:</strong></td><td>{$row['age']}</td></tr>";
-            echo "<tr><td><strong>Price:</strong></td><td>{$row['price']}</td></tr>";
-            echo "<tr><td><strong>Musical Info:</strong></td><td>{$row['musicalInfo']}</td></tr>";
-            echo "<tr><td><strong>Musical State:</strong></td><td>{$row['musicalState']}</td></tr>";
-        }
-        echo '</table>';
-    } else {
+            if ($result2->num_rows > 0) {
+                
+                while ($row = $result2->fetch_assoc()) {
+                    echo '<div class="titleB">';
+                    echo "<br><br><br><br><span style='font-size: 30px;color:var(--color3);'>{$row['musicalName']}</span><&nbsp><&nbsp>";
+
+                    ?>
+                    <!-- 좋아요 버튼 폼 -->
+                    <form method="post" action="">
+                        <input type="hidden" name="sessionId" value="<?php echo $sessionId; ?>">
+                        <input type="hidden" name="musicalId" value="<?php echo $id; ?>">
+                        <button type="submit" name="likeButton" class="heart">LIKE♥</button>
+                    </form>
+                    <?php
+
+                    echo '</div><br>';
+                    echo '<table style="text-align: left;">';
+                    echo "<tr><td>기간 </td><td>{$row['openDate']} ~</td></tr>";
+                    echo "<tr><td><br><br></td><td>{$row['closeDate']}<br><br></td></tr>";
+                    echo "<tr><td>장소 <br><br></td><td>{$row['theaterName']}<br><br></td></tr>";
+                    echo "<tr><td>배우 <br><br></td><td>{$row['actors']}<br><br></td></tr>";
+                    echo "<tr><td>러닝 <br><br></td><td>{$row['runningTime']}<br><br></td></tr>";
+                    echo "<tr><td>나이 <br><br></td><td>{$row['age']}<br><br></td></tr>";
+                    echo "<tr><td>가격 <br><br></td><td>{$row['price']}<br><br></td></tr>";
+                    echo "<tr><td>상태 <br><br></td><td>{$row['musicalState']}<br><br></td></tr>";
+                    echo '</table><br>';
+                    echo "<span style='font-size: larger;color:var(--color3);'>{$row['musicalInfo']}</span>";
+                }
+                
+                
+            }
+    else {
         echo "뮤지컬 정보가 없습니다.";
     }
             // 데이터베이스 연결 종료
