@@ -87,7 +87,7 @@
                 FROM ticketBook
                 WHERE memberId = '$sessionId'
                 ORDER BY ticketDate DESC
-                LIMIT 3
+                LIMIT 5
                 ";
     
                 $result = $conn->query($selectSql);
@@ -219,6 +219,7 @@
                         FROM review
                         WHERE memberId='$sessionId'
                         ORDER BY createdAt DESC
+                        LIMIT 3
                     ";
 
                     // 쿼리 실행
