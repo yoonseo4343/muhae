@@ -31,7 +31,9 @@
             margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 50%; 
+            width: 40%;
+            max-width: 600px;
+
         }
 
         .close {
@@ -88,9 +90,7 @@
 
                 echo "</table>";
             } else {
-                // echo "티켓이 없습니다.";
-                echo "<img src='../src/empty.png' alt='no file' style='width: 15%;'>";
-
+                echo "티켓이 없습니다.";
             }
             echo "<script>";
             echo "var tickets = " . json_encode($tickets) . ";";
@@ -101,16 +101,13 @@
             ?>
 
         </div>
-        <div class="right-side">
             <div id="calendar-container">
-
                 <div class="navigation-buttons">
                     <button onclick="showPreviousMonth()">◀</button>
                     <div id="calendar"></div>
                     <button onclick="showNextMonth()">▶</button>
                 </div>
             </div>
-        </div>
     </div>
 
     <!-- 모달 창 -->
