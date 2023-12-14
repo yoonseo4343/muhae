@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- 헤더,네비 불러옴 -->
+    <?php include 'title.php'; ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,8 +29,6 @@
     </style>
 </head>
 <body>
-    <!-- 헤더,네비 불러옴 -->
-    <?php include 'title.php'; ?>
 
     <div class="content">
     <div class="left-side">

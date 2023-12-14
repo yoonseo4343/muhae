@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php include 'title.php'; ?>
-<div class="content">
+<div class="upload_content">
     <div class="center">
         <div class="myPage_back">
     <?php
@@ -61,18 +61,18 @@
 
     ?>
     <form action="login.php" method="post">
-    <h2>LOGIN</h2>
+    <br><h2>LOGIN</h2>
     <?php if (isset($_GET['error'])) { ?>
         <p class="error"><?php echo $_GET['error']; ?></p>
     <?php } ?>
-    <label>User Name</label>
-    <input type="text" name="memberId" placeholder="ID"><br>
+    <label>User Name : </label>
+    <input type="text" name="memberId" placeholder="ID"><br><br>
 
     <label>Password</label>
-    <input type="password" name="pw" placeholder="Password"><br>
+    <input type="password" name="pw" placeholder="Password"><br><br>
 
-    <button type="submit">로그인</button>
-    <a href="register.php" class="ca">회원 가입</a>
+    <button class="button" type="submit">로그인</button>
+    <a href="register.php" class="ca">회원 가입</a><br><br>
     </form>
     </div></div></div>
 </body>

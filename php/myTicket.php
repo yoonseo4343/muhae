@@ -49,7 +49,7 @@
             text-decoration: none;
             cursor: pointer;
         }
-        table {
+table {
             background-color: #FFFFFF; /* 새로운 배경색을 여기에 지정하세요 */
         }
         h2 {
@@ -58,7 +58,6 @@
             text-align: center; /* 헤더 텍스트의 정렬을 조절하세요 */
             margin-top: 0; /* 헤더의 상단 마진을 조절하세요 */
         }
-
     </style>
 </head>
 
@@ -68,7 +67,7 @@
     <div class="content">
         <div class="left-side">
             <!-- 티켓북 업로드 버튼 -->
-            <a href="ticketUpload.php"><button>티켓 추가</button></a>
+            <a href="ticketUpload.php"><button class="button">티켓 추가</button></a>
             <?php
             // 데이터베이스 연결
             require_once("dbconfig.php");

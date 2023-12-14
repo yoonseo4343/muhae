@@ -10,7 +10,7 @@
         <?php include 'webstyle.css';?> 
         /* 스타일 불러옴 */
         table {
-            width: 65%;
+   
             border-collapse: collapse;
             margin-top: 20px;
             font-size: 12px; /* 추가된 부분: 테이블 내의 텍스트 크기를 작게 설정 */
@@ -25,7 +25,7 @@
         }
 
         th, td {
-            color: var(--color3);
+	    color: var(--color3);
             padding: 10px;
             line-height: 1.2;
             text-align: left;

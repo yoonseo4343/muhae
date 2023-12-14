@@ -27,7 +27,7 @@
 
             // musicals 테이블에서 poster 선택하여 출력
             $offset = ($currentPage - 1) * $itemsPerPage;
-            $query = "SELECT poster, musicalId FROM musicals LIMIT $itemsPerPage OFFSET $offset";
+            $query = "SELECT poster, musicalId FROM musicals ORDER BY openDate DESC LIMIT $itemsPerPage OFFSET $offset";
             $result = mysqli_query($conn, $query);
 
             // 결과가 있을 경우 출력
@@ -51,7 +51,7 @@
                 $totalPages = ceil($totalItems / $itemsPerPage);
                 echo "<div class='pagination'>";
                 for ($i = 1; $i <= $totalPages; $i++) {
-                    echo "<a href='?page=$i' " . ($i == $currentPage ? 'class="active"' : '') . ">$i</a>";
+                    echo "<a href='?page=$i' " . ($i == $currentPage ? 'class="current"' : '') . ">$i</a>";
                 }
                 echo "</div>";
             } else {

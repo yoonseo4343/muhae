@@ -101,11 +101,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <center>
                         <input class="button" type="submit" value="등록하기">
-                    </center>
+                    </center><br>
                 </td>
             </tr>
         </table>
-    </form>
+    </form><br>
     <a href="hero.php"><button class="button">돌아가기</button></a>
     </div></div>
 </body>

@@ -222,10 +222,11 @@ color:var(--color3);
                 <thead>
                     <tr><th>REVIEW</th></tr></thead><td>
                 <?php
-
+                if ($loggedIn) {
                     $selectReviews = "
                         SELECT boardId, title, rating, memberId, createdAt, content
                         FROM review
+                        WHERE memberId='$sessionId'
                         ORDER BY createdAt DESC
                         LIMIT 3
                     ";
@@ -252,11 +253,13 @@ color:var(--color3);
 
                     } else {
                         // 리뷰가 없을 경우의 처리
-                        // Handle case when the user is not logged in
-                        echo "<div class='ticket'><a href='myTicket.php'>";
-                        echo "<img src='../src/ticket.png'></a></div>";
+                        echo "<p>리뷰가 없습니다.</p>";
                     }
-                
+                }else{
+                    // Handle case when the user is not logged in
+                    echo "<div class='ticket'><a href='myTicket.php'>";
+                    echo "<img src='../src/ticket.png'></a></div>";
+                }
                 ?></td>
         </table>
 <p>
@@ -338,4 +341,3 @@ color:var(--color3);
 ?>
 </body>
 </html>
-

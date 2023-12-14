@@ -1,7 +1,7 @@
 <!-- <body> 태그 안에 넣으면 됨. -->
     <!-- 세션시작, 헤더와 네비 기능 -->
 
-<?php
+    <?php
 // 세션 시작
 session_start();
 
@@ -17,15 +17,14 @@ $sessionId=$_SESSION['id']; //현재 로그인된 회원 아이디 값
     </a>
 </header>
 
-<nav>
+<nav class="nav_menu">
     <a href="main.php">MAIN</a>
     <a href="musicals.php">MUSICALS</a>
     <a href="hero.php">REVIEW</a>
     <a href="likepage.php">LIKE</a>
     <a href="myTicket.php">TICKETBOOK</a>
     <a href="myPage.php">MYPAGE</a>
-    <a href="myPage.php">EVENT</a>
-
+ <a href="myPage.php">EVENT</a>
     <?php
     // 로그인되어 있는 경우에만 로그아웃 링크를 표시
     if ($loggedIn) {

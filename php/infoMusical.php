@@ -1,5 +1,4 @@
 <!-- musicals table에 api 정보 불러와서 저장 -->
-<!-- 주기적으로 실행되도록 해야함 -->
 <?php
 
 // 데이터베이스 연결
@@ -15,9 +14,9 @@ $api_url = 'http://www.kopis.or.kr/openApi/restful/pblprfr';
 
 // 필수 및 선택적 매개변수 설정
 $service_key = 'a875cf23b1ac4fdebe91b2ab2478c821';
-$stdate = '20231101';
-$eddate = '202301230';
-$rows = 100; //개수
+$stdate = date('Ymd');
+$eddate = date('Ymd', strtotime('+1 year'));
+$rows = 30;
 $cpage = 1;
 $shcate  = 'GGGA';
 
@@ -102,10 +101,6 @@ $sty = (string)$sty[0];
 $prfstate = $data2->xpath('//prfstate'); // 상태
 $prfstate = (string)$prfstate[0];
 
-//중복방지
-$check="SELECT * FROM musicals WHERE musicalId = '$mt20id'";
-$checkRe= $conn->query($check);
-if($checkRe->num_rows==0){
     // 데이터베이스에 데이터 삽입
     $sql = "INSERT INTO musicals 
             (musicalId, musicalName, openDate, closeDate, theaterName, actors, runningTime, age, price, poster, musicalInfo, musicalState) 
@@ -117,7 +112,6 @@ if($checkRe->num_rows==0){
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-}
 } else {
     echo "No data found for mt20id: $mt20id.";
 }
