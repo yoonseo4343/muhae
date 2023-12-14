@@ -50,7 +50,7 @@
             cursor: pointer;
         }
         table {
-            background-color: #CAC9F2; /* 새로운 배경색을 여기에 지정하세요 */
+            background-color: #FFFFFF; /* 새로운 배경색을 여기에 지정하세요 */
         }
         h2 {
             color: white; /* 헤더 텍스트의 색상을 지정하세요 */

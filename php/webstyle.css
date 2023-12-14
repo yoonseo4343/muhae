@@ -49,7 +49,7 @@ nav a {
     margin-right: 10px;
 }
 th{
-    color:var(--color1);
+    color: #000000;
 }
 hr {
     border: 1px solid rgba(202, 201, 242, 0.6);
