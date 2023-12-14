@@ -61,6 +61,13 @@
         table {
             margin: 0 auto; /* 가운데 정렬을 위한 margin 설정 */
         }
+th{
+color:var(--color3);
+}
+tr{
+color:var(--color3);
+}
+
 
     </style>
     
@@ -76,7 +83,7 @@
             <!-- 베스트 뮤덕 내용을 추가할 부분 -->
             <!-- 티켓북 추가할 부분 -->
             
-            <table>
+            <table class="my_ticket">
                 <thead>
             <tr><th>MY TICKET</th></tr></thead><td>
             <?php
@@ -110,12 +117,14 @@
             }
             
             ?></td></table>
+<p>
 
             <!-- 인기 뮤지컬 리스트 -->
-            <hr>
-            <table>
+
+            <table class="my_ticket">
                 <thead>
             <tr><th>BEST MUSICAL</th></tr></thead><td>
+<link href="https://fonts.googleapis.com/css2?family=Dhurjati&family=Diphylleia&family=Gasoek+One&display=swap" rel="stylesheet">
             <?php
             $bestQ="SELECT m.poster, m.musicalId
             FROM (
@@ -208,7 +217,7 @@
     </div>
             
     <div class="right-side">
-        <table>
+        <table class="my_ticket">
             <!-- 리뷰 목록을 가져오는 쿼리 -->
                 <thead>
                     <tr><th>REVIEW</th></tr></thead><td>
@@ -253,11 +262,11 @@
                 }
                 ?></td>
         </table>
+<p>
 
-        <hr>
 
         <!-- 뮤지컬 컴퍼니 주소 추가 -->
-        <table>
+        <table class="mucompany">
             <thead>
                 <tr>
                     <th>MUSICAL COMPANY</th>
@@ -267,15 +276,15 @@
                 <tr>
                     <td>
                         <a href="https://emkmusical.com/" target="_blank">
-                            <img src="../src/emk.jpg" alt="COMPANY">
+                            <img class="img_company" src="../src/emk.jpg" alt="COMPANY">
                         </a>
                         <br>
                         <a href="https://www.odmusical.com/production/list?ca_id=01" target="_blank">
-                            <img src="../src/OD컴퍼니.jpg" alt="COMPANY">
+                            <img class="img_company" src="../src/OD컴퍼니.jpg" alt="COMPANY">
                         </a>
                         <br>
                         <a href="https://www.iseensee.com/Home/Perf/SalePerfList.aspx" target="_blank">
-                            <img src="../src/신시.jpg" alt="COMPANY">
+                            <img class="img_company" src="../src/신시.jpg" alt="COMPANY">
                         </a>
                         
                     </td>
@@ -332,3 +341,4 @@
 ?>
 </body>
 </html>
+
