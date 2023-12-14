@@ -49,6 +49,16 @@
             text-decoration: none;
             cursor: pointer;
         }
+        table {
+            background-color: #CAC9F2; /* 새로운 배경색을 여기에 지정하세요 */
+        }
+        h2 {
+            color: white; /* 헤더 텍스트의 색상을 지정하세요 */
+            padding: 10px; /* 헤더의 내부 여백을 조절하세요 */
+            text-align: center; /* 헤더 텍스트의 정렬을 조절하세요 */
+            margin-top: 0; /* 헤더의 상단 마진을 조절하세요 */
+        }
+
     </style>
 </head>
 

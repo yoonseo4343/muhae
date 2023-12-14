@@ -24,6 +24,8 @@ $sessionId=$_SESSION['id']; //현재 로그인된 회원 아이디 값
     <a href="likepage.php">LIKE</a>
     <a href="myTicket.php">TICKETBOOK</a>
     <a href="myPage.php">MYPAGE</a>
+    <a href="myPage.php">EVENT</a>
+
     <?php
     // 로그인되어 있는 경우에만 로그아웃 링크를 표시
     if ($loggedIn) {
