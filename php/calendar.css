@@ -1,18 +1,23 @@
+:root {
+  --color1 : #B569BF;
+  --color2 : #94ABF2;
+  --color3 : #CAC9F2;
+  --color4 : #485373;
+  --color5 : #070926;
+  --color6 : #ffffff;
+  --button-background-color: #485373; /* 여기에 원하는 색상 코드를 넣어주세요 */
+}
 #calendar-container {
     font-family: 'Arial', sans-serif;
     max-width: 600px;
-    margin: 20px auto;
+    flex: 1;   
+    margin-left: 10px;
+    background-color: var(--color4);
     text-align: center;
     position: relative; /* 부모 요소에 대한 상대적인 위치 설정 */
+    
 }
 
-.navigation-buttons {
-    position: absolute; /* 버튼의 위치를 절대적으로 설정 */
-    top: 0; /* 상단에 위치하도록 설정 */
-    width: 100%; /* 부모 요소의 100% 너비를 사용 */
-    display: flex;
-    justify-content: space-between; /* 각 버튼을 양 끝에 배치 */
-}
 #calendar-container .navigation-buttons {
     display: flex;
     justify-content: space-between;
@@ -21,10 +26,11 @@
 }
 #calendar-container .navigation-buttons button {
   height: 30px; /* 적절한 높이 값으로 조절 */
+  background-color: var(--button-background-color); /* 변수를 통해 배경색 적용 */
 }
 #calendar-container .navigation-buttons img {
-    width: 50px; /* 이미지의 최대 너비를 100%로 설정하여 부모 요소에 맞게 조절 */
-    height: 50px;
+    width: 70px; /* 이미지의 최대 너비를 100%로 설정하여 부모 요소에 맞게 조절 */
+    height: 70px;
     object-fit: cover; /* 높이를 자동으로 조절하여 비율을 유지 */
 }
 #calendar-container td {
@@ -35,7 +41,7 @@
 #calendar {
     display: inline-block;
     vertical-align: top;
-    margin-top: 40px; /* 상단에 여백 추가 */
+    margin-top: -20px; /* 상단에 여백 추가 */
 }
 
 table {
