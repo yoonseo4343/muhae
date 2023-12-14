@@ -110,7 +110,7 @@
 
                 // 가져온 리뷰 목록을 테이블로 출력
                 if ($result->num_rows > 0) {
-                    echo "<h2>REVIEW</h2>";
+                    echo "<h2 style='color:var(--color3);'>REVIEW</h2>";
                     echo "<table>";
                     echo "<tr>
                             <th>번호</th>
