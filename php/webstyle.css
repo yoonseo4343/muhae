@@ -147,11 +147,13 @@ a {
 .my_ticket{
 	border: 1.5px dashed rgba(202, 201, 242, 0.6);
 	border-radius: 5px 5px 5px 5px;
-	font-family: 'Dhurjati', cursive;
-	font-size: 1.5rem;
+	
+}
+.font{
+    font-family: 'Dhurjati', cursive;
+    font-size: 1.5rem;
 
 }
-
 .mucompany{
 	border: 1.5px dashed rgba(202, 201, 242, 0.6);
 
@@ -187,8 +189,5 @@ a {
 	outline: 2px solid var(--color2);
 	border-radius: 5px 5px 5px 5px;
 	padding-left: 5px;
-
-
-
 	}
 

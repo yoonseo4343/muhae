@@ -229,7 +229,7 @@ table {
                             var modalTextElement = document.getElementById('modalText');
                             if (modalTextElement) {
                                 var memo = selectedTicket.ticketMemo || '메모가 없습니다.';
-                                modalTextElement.innerText = 'Ticket Memo: ' + memo;
+                                modalTextElement.innerText = memo;
                                 document.getElementById('myModal').style.display = 'block';
                             } else {
                                 console.error('Modal text element not found.');
