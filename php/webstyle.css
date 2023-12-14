@@ -42,6 +42,15 @@ nav a {
     margin: 0 15%; /* 여백 추가 */
 
 }
+.upload_content {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin: 0 15%; /* 여백 추가 */
+	color: #FFFFFF;
+
+}
+
 .left-side {
     flex: 1;
     background-color: var(--color5);
