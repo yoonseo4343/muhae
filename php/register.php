@@ -50,28 +50,30 @@ mysqli_close($conn);
 </head>
 <body>
 <?php include 'title.php'; ?>
-<div class="content">
+<div class="upload_content">
     <div class="center">
+	<div class="myPage_back">
     <form action="register.php" method="POST">
-        <h2>회원가입</h2>
+        <br><h2>회원가입</h2>
 
-        <label>아이디</label>
-        <input type="text" name="memberId" placeholder="memberId" required><br>
+        <label>아이디 : </label>
+        <input type="text" name="memberId" placeholder="memberId" required><br><br>
 
-        <label>이메일</label>
-        <input type="text" name="email" placeholder="email" required><br>
+        <label>이메일 : </label>
+        <input type="text" name="email" placeholder="email" required><br><br>
 
-        <label>비밀번호</label>
-        <input type="password" name="pw" placeholder="pw" required><br>
+        <label>비밀번호 : </label>
+        <input type="password" name="pw" placeholder="pw" required><br><br>
 
-        <label>닉네임</label>
-        <input type="text" name="nickName" placeholder="User Name" required><br>
+        <label>닉네임 : </label>
+        <input type="text" name="nickName" placeholder="User Name" required><br><br>
 
 
-        <button type="submit">회원가입</button><br>
+        <button class="button" type="submit">회원가입</button><br><br>
         <a href="login.php" class="ca">이미 가입 되어 있으신가요?</a>
-    </form>
+    </form><br>
     </div>
+</div>
 </div>
 </body>
 </html>
