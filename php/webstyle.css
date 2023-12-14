@@ -182,7 +182,7 @@ a {
 	border-radius: 5px 5px 5px 5px;
 	background-color: var(--color3);
 }
-.myPage_back {
+	.myPage_back {
 	background-color: var(--color4);
 	outline: 2px solid var(--color2);
 	border-radius: 5px 5px 5px 5px;
@@ -191,3 +191,4 @@ a {
 
 
 	}
+
