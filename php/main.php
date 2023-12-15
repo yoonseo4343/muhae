@@ -286,7 +286,7 @@ color:var(--color3);
 <!-- Modal -->
 <div id="myModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close" onclick="closeModal()" style="cursor: pointer;">&times;</span>
         <img src="../src/레베카.jpg" alt="이미지 설명" >
         <p>뮤지컬 대관 할인 서비스!!!!</p>
         <P>선착순 50명 한정</p>
@@ -315,6 +315,10 @@ color:var(--color3);
                 closeModal();
             }
         };
+        // x 버튼 클릭 시 모달 닫기
+        document.querySelector('.close').addEventListener('click', function () {
+            closeModal();
+        });
     });
 
 </script>
