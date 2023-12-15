@@ -1,5 +1,5 @@
 <?php
-
+// DB연결
 $DBhost = "ysy-instance-rds.cjmgpc5vbjlx.us-east-1.rds.amazonaws.com";
 $DBuser = "admin";
 $DBpassword = "admin123";

@@ -6,11 +6,11 @@
 
 #image-slider {
     transition: transform 1s ease-in-out;
-    display: flex; /* 이미지들을 가로로 나열하기 위해 flex 사용 */
+    display: flex; /* 이미지들을 가로로 나열*/
 }
 
 .slide {
-    flex: 0 0 100%; /* 각 이미지의 너비를 400px로 고정 */
+    flex: 0 0 100%; 
 }
 
 img {

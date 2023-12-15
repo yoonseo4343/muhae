@@ -80,7 +80,6 @@ color:var(--color3);
 
     <div class="content">
         <div class="left-side"  >
-            <!-- 베스트 뮤덕 내용을 추가할 부분 -->
             <!-- 티켓북 추가할 부분 -->
             
             <table class="my_ticket">
@@ -119,7 +118,7 @@ color:var(--color3);
             ?></td></table>
 <p>
 
-            <!-- 인기 뮤지컬 리스트 -->
+            <!-- 베스트 뮤지컬 리스트 -->
 
             <table class="my_ticket">
                 <thead>
@@ -152,7 +151,6 @@ color:var(--color3);
             $query = "SELECT poster,musicalId FROM musicals ORDER BY openDate DESC LIMIT 5";
             $result = mysqli_query($conn, $query);
             $imagePaths = array();
-            // $idArray=array();
 
             while ($row = mysqli_fetch_assoc($result)) {
                 $poster = $row['poster'];
@@ -160,7 +158,6 @@ color:var(--color3);
             
                 // 결과를 배열에 추가
                 $imagePaths[] = $poster;
-                // $idArray[] = array('musicalId' => $musicalId);
             }
 
             // 이미지 경로를 기반으로 이미지 태그 생성
@@ -250,7 +247,6 @@ color:var(--color3);
                         }
 
                     } else {
-                        // Handle case when the user is not logged in
                         echo "<div class='ticket'><a href='myTicket.php'>";
                         echo "<img src='../src/ticket.png'></a></div>";
                     }
@@ -325,7 +321,7 @@ color:var(--color3);
 <script>
     function redirectToHero() {
         window.location.href = 'hero.php'; // 원하는 경로로 변경 가능
-        return false; // 링크의 기본 동작을 중단합니다.
+        return false; // 링크의 기본 동작을 중단
     }
 </script>
 

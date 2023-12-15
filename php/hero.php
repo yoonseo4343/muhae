@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>뭐해? 뮤해!</title>
+    <title>리뷰페이지</title>
     <!-- 헤더,네비,세션 불러옴 -->
     <?php include 'title.php'; ?>
     <style>
@@ -13,7 +13,7 @@
    
             border-collapse: collapse;
             margin-top: 20px;
-            font-size: 12px; /* 추가된 부분: 테이블 내의 텍스트 크기를 작게 설정 */
+            font-size: 12px;
             margin: auto;
         }
 
@@ -65,7 +65,7 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4); /* 어두운 배경색 지정 */
+            background-color: rgba(0, 0, 0, 0.4);
             padding-top: 60px;
         }
 

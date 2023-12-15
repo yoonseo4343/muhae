@@ -6,7 +6,7 @@
   <style> 
     <?php include 'calendar.css';?>
   </style>
-  <title>달력 예제</title>
+  <title>티켓북 캘린더</title>
 </head>
 <body>
 <div id="calendar-container">

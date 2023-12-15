@@ -1,13 +1,9 @@
 <!-- musicals table에 api 정보 불러와서 저장 -->
+<!-- 주기적으로 호출 후 DB테이블 업뎃 -->
 <?php
 
 // 데이터베이스 연결
 require_once("dbconfig.php");
-
-// // 에러 로깅 활성화
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
 
 // API 엔드포인트 URL
 $api_url = 'http://www.kopis.or.kr/openApi/restful/pblprfr';
